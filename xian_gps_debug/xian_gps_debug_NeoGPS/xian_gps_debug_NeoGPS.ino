@@ -1,11 +1,31 @@
-#include <TinyGPSPlus.h>
-//test
-TinyGPSPlus gps;
+#include <NMEAGPS.h>
+
+// good documentation here https://github.com/SlashDevin/NeoGPS/blob/master/README.md
+
+/*
+
+NEO-6M GPS Module with Arduino:
+https://randomnerdtutorials.com/guide-to-neo-6m-gps-module-with-arduino/
+
+Position Fix LED Indicator
+There is an LED on the NEO-6M GPS module that indicates the status of the ‘Position Fix’. It will blink at different rates depending on which state it is in:
+
+No blinking – it is searching for satellites.
+Blink every 1s – Position Fix is found (the module can see enough satellites).
+*/
+
+// Set up the syste to read the GPS module using the Arduino of the Humedata Lihuen V.1.0. 
 
 const int XIAN_SWITCH = A4;
 const int GPS_SWITCH = A5;
 const int RS485_SWITCH = A6;
 const int MAX_3485_EN = 3;
+
+// Define GPS port
+#define gpsPort Serial1
+#define GPS_PORT_NAME "Serial1"
+#define DEBUG_PORT Serial
+
 
 void setup()
 {
@@ -22,80 +42,54 @@ void setup()
   
   Serial.begin(115200);
   Serial1.begin(9600);
-
-  Serial.println(F("DeviceExample.ino"));
-  Serial.println(F("A simple demonstration of TinyGPSPlus with an attached GPS module"));
-  Serial.print(F("Testing TinyGPSPlus library v. ")); Serial.println(TinyGPSPlus::libraryVersion());
-  Serial.println(F("by Mikal Hart"));
-  Serial.println();
 }
+
+// Using the NeoGPS library, define a Neo object
+NMEAGPS gps;
+
+// The main NMEAGPS gps; object you declare in your sketch parses received characters, gradually assembling a fix (e.g., gps_fix fix;).
+gps_fix currentFix;
+
 
 void loop()
 {
   // This sketch displays information every time a new sentence is correctly encoded.
-  while (Serial1.available() > 0)
-    if (gps.encode(Serial1.read()))
-      displayInfo();
-
-  if (millis() > 5000 && gps.charsProcessed() < 10)
-  {
-    Serial.println(F("No GPS detected: check wiring."));
-    while(true);
+  while (gps.available( Serial1 )) {
+    currentFix = gps.read();
+if (currentFix.valid.date) {
+    Serial.println( "We have date!" );
+    Serial.print( currentFix.dateTime.year);
+    Serial.print( '-' );
+    Serial.print( currentFix.dateTime.month);
+    Serial.print( '-' );
+    Serial.println( currentFix.dateTime.date);
+      }
+  else{
+  Serial.println(F("No date yet, sorry."));
+    //while(true);
   }
-}
-
-void displayInfo()
-{
-  Serial.print(F("Location: ")); 
-  if (gps.location.isValid())
-  {
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(F(","));
-    Serial.print(gps.location.lng(), 6);
+if (currentFix.valid.time) {
+    Serial.println( "We have time!" );
+    Serial.print( currentFix.dateTime.hours );
+    Serial.print( ':' );
+    Serial.print( currentFix.dateTime.minutes );
+    Serial.print( ':' );
+    Serial.println( currentFix.dateTime.seconds );
   }
-  else
-  {
-    Serial.print(F("INVALID"));
+  else{
+  Serial.println(F("No time yet, sorry."));
+    //while(true);
+    }
+if (currentFix.valid.location) {
+    Serial.println( "We have Lat/Lon!" );
+    Serial.print( currentFix.latitude() );
+    Serial.print( ',' );
+    Serial.println( currentFix.longitude() );
   }
-
-  Serial.print(F("  Date/Time: "));
-  if (gps.date.isValid())
-  {
-    Serial.print(gps.date.month());
-    Serial.print(F("/"));
-    Serial.print(gps.date.day());
-    Serial.print(F("/"));
-    Serial.print(gps.date.year());
+  else{
+  Serial.println(F("No GPS location yet, sorry."));
+    //while(true);
+    }
   }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if (gps.time.isValid())
-  {
-    if (gps.time.hour() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.hour());
-    Serial.print(F(":"));
-    if (gps.time.minute() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.minute());
-    Serial.print(F(":"));
-    if (gps.time.second() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.second());
-    Serial.print(F("."));
-    if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    Serial.println(gps.time.centisecond());
-
-// Try some additional commands from TinyGPSPlus to parse data from GPS module. 
-Serial.print("LAT=");  Serial.println(gps.location.lat(), 6);
-Serial.print("LONG="); Serial.println(gps.location.lng(), 6);
-Serial.print("ALT=");  Serial.println(gps.altitude.meters());
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-delay(5000);
-  Serial.println();
+delay(100); // a delay to slow down the display 
 }
