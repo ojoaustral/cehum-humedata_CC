@@ -23,7 +23,7 @@ void get_gps_data(){
        result = Serial1.available(); // figure out why I'm getting values where thre is none 
            
     if(gps.encode(Serial1.read())){
-      if (gps.time.isUpdated()){ // figure out why I'm getting values where thre is none
+      //if (gps.time.isUpdated()){ // figure out why I'm getting values where thre is none
       gps_latitude = gps.location.lat();
       gps_longitude = gps.location.lng();
       _year = gps.date.year();
@@ -33,7 +33,7 @@ void get_gps_data(){
       _minutes = gps.time.minute();
       _seconds = gps.time.second();
       delay(1000);
-      }
+    //  }
     }
   }
   _data[11] = gps_longitude;

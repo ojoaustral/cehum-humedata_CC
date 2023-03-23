@@ -16,13 +16,14 @@ void env_pressure(){
 }
 
 void read_battery_level(){
-  batt_level = analogRead(A1);
-  _data[14] = batt_level;
+  batt_analog = analogRead(A1);
+  _data[14] = batt_analog;
+  _data[29] = 0.24882419 + 0.01756731 * batt_analog;             // Calculate Volts from empirical eq. march 2023, CC.
 }
 
 void write_to_sd(float data0, float data1,float data2,float data3,float data4, float data5, float data6, float data7, float data8, float data9, 
                   float data10, float data11, float data12, float data13, float data14, float data15, float data16, float data17, float data18, float data19,
-                  float data20, float data21, int data22, int data23, int data24, int data25, int data26, int data27, int data28) 
+                  float data20, float data21, int data22, int data23, int data24, int data25, int data26, int data27, int data28, float data29) 
   {
   SPI.begin();
   delay(100);
@@ -86,7 +87,9 @@ void write_to_sd(float data0, float data1,float data2,float data3,float data4, f
   dataFile.print(",");
   dataFile.print(data27);
   dataFile.print(",");
-  dataFile.println(data28);
+  dataFile.print(data28);
+  dataFile.print(",");
+  dataFile.println(data29);
   
   dataFile.close();
   delay(1000);

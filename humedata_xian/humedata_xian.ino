@@ -45,15 +45,6 @@ void setup()
 
 void loop() 
 {
-  // Reset values to avoid carry-overs.
-      gps_latitude = 999;
-      gps_longitude = 999;
-      _year = 999;
-      _month = 999;
-      _day = 999;
-      _hour = 999;
-      _minutes = 999;
-      _seconds = 999;
   digitalWrite(GPS_SWITCH, HIGH);
   delay(gps_fix_time*60*1000);
 

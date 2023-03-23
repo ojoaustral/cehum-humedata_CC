@@ -143,7 +143,7 @@ void setup() {
   dataFile = SD.open("log-0000.csv", FILE_WRITE);
   delay(1000);
   // Se almacena la cabecera de los datos a almacenar 
-  dataFile.println("DissolvedOxygen,pH,ElectricalConductivity,TotalDissolvedSolids,Salinity,RelativeDensity,WaterTemperature,InternalPressure,AtmosphericPressure,AtmosphericTemperature,Latitude,Longitude,InternalTemperature,InternalHumidity,BatteryLevel,ORP,Saturation,DissolvedOxygenTemp,SaturationTemp,ElectricalConductivityTemp,pHTemp,DO15C,Year,Month,Day,Hour,Minutes,Seconds, Centiseconds");
+  dataFile.println("DissolvedOxygen,pH,ElectricalConductivity,TotalDissolvedSolids,Salinity,RelativeDensity,WaterTemperature,InternalPressure,AtmosphericPressure,AtmosphericTemperature,Latitude,Longitude,InternalTemperature,InternalHumidity,Batt_analog,ORP,Saturation,DissolvedOxygenTemp,SaturationTemp,ElectricalConductivityTemp,pHTemp,DO15C,Year,Month,Day,Hour,Minutes,Seconds, Centiseconds,Batt_voltage");
   dataFile.close();
   delay(100);
   SPI.end();
@@ -216,7 +216,7 @@ void loop() {
   // Se almacenan los datos en la memoria SD
   write_to_sd(_data[0],_data[1],_data[2],_data[3],_data[4],_data[5],_data[6],_data[7],_data[8],_data[9],
   _data[10],_data[11], _data[12], _data[13], _data[14], _data[15], _data[16], _data[17], _data[18], _data[19],
-   _data[20], _data[21], _year, _month, _day, _hour, _minutes, _seconds, _centiseconds);
+   _data[20], _data[21], _year, _month, _day, _hour, _minutes, _seconds, _centiseconds, _data[29]);
 
   // Se transforman algunos datos de flotante a sus bytes componentes para enviarlos a través de LoRaWAN 
   float2Bytes(gps_latitude,&gps_latitude_float_bytes[0]);
@@ -272,7 +272,8 @@ void loop() {
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
   
-  _data_lorawan[29] = uint8_t  ((_data[14] - 2144.0) * 255.0/670.0);   // Battery Level 
+  //_data_lorawan[29] = uint8_t  ((_data[14] - 2144.0) * 255.0/670.0);   // Battery Level (Here, I don´t understand the -2144 (CC, march 2023))
+  _data_lorawan[29] = uint8_t  (_data[14] * 255.0/693);   // Battery Level (max(batt_analog, after charging) = 693 (CC, march 2023). I deleted the addition of -2144 before the product; it seemed innecessary. 
   
   _data_lorawan[30] =   orp_float_bytes[0];                            // ORP
   _data_lorawan[31] =   orp_float_bytes[1];                            // ORP

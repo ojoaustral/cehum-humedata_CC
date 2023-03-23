@@ -15,10 +15,10 @@ void env_pressure()
 
 void read_battery_level()
 {
-  batt_reading = analogRead(A1);
-  batt_voltage = 0.015625*batt_reading + 0.0375; // batt_reading comes straight from the Analog to digital converter. 
+  batt_analog = analogRead(A1); // batt_analog comes straight from the Analog to digital converter.
+  batt_voltage = 0.01569447*batt_analog + 0.02719791;  // Empirical equation from experiment run in march 2023 by CC.  
   _data[14] = batt_voltage;
-  _data[23] = batt_reading;
+  _data[23] = batt_analog;
 }
 
 void write_to_sd(float data0, float data1,float data2,float data3,float data4,
@@ -178,7 +178,7 @@ void send_lorawan_data()
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
   
-  
+  _data_lorawan[29] = uint8_t  (batt_analog - 600);                 // Battery Level (Here don't get why the -600, CC. Anyways, replace by batt_volts.)
   
   _data_lorawan[30] =   orp_readings[3];                            // ORP
   _data_lorawan[31] =   orp_readings[4];                            // ORP
@@ -293,7 +293,7 @@ void sd_begin()
   dataFile = SD.open("log-0000.csv", FILE_WRITE);
   delay(1000);
   // Se almacena la cabecera de los datos a almacenar (colnames, column names)
-  dataFile.println("DissolvedOxygen,pH,ElectricalConductivity,TotalDissolvedSolids,Salinity,RelativeDensity,WaterTemperature,InternalPressure,AtmosphericPressure,AtmosphericTemperature,Latitude,Longitude,InternalTemperature,InternalHumidity,BatteryLevel,ORP,Saturation,Year,Month,Day,Hour,Minutes,Seconds, batt_reading");
+  dataFile.println("DissolvedOxygen,pH,ElectricalConductivity,TotalDissolvedSolids,Salinity,RelativeDensity,WaterTemperature,InternalPressure,AtmosphericPressure,AtmosphericTemperature,Latitude,Longitude,InternalTemperature,InternalHumidity,Batt_Voltage,ORP,Saturation,Year,Month,Day,Hour,Minutes,Seconds, Batt_analog");
   dataFile.close();
   delay(100);
   SPI.end();

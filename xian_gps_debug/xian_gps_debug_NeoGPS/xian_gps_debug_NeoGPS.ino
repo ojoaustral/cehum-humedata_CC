@@ -1,8 +1,12 @@
 #include <NMEAGPS.h>
 
-// good documentation here https://github.com/SlashDevin/NeoGPS/blob/master/README.md
+// 
 
 /*
+The following script was implemented by C. Correa on 2023-03-03 to find a more robust and reliable way to gat a timestamp from the GPS module of Humedata.
+The previous version uses TinyGPS++ but both HD Atlas and Lihuen produced faulty and erratic timestamps.   
+ 
+Good documentation here https://github.com/SlashDevin/NeoGPS/blob/master/README.md
 
 NEO-6M GPS Module with Arduino:
 https://randomnerdtutorials.com/guide-to-neo-6m-gps-module-with-arduino/
@@ -50,6 +54,15 @@ NMEAGPS gps;
 // The main NMEAGPS gps; object you declare in your sketch parses received characters, gradually assembling a fix (e.g., gps_fix fix;).
 gps_fix currentFix;
 
+float gps_latitude;
+float gps_longitude;
+
+int _year;
+int _month;
+int _date;
+int _hour;
+int _minutes;
+int _seconds;
 
 void loop()
 {
@@ -63,9 +76,16 @@ if (currentFix.valid.date) {
     Serial.print( currentFix.dateTime.month);
     Serial.print( '-' );
     Serial.println( currentFix.dateTime.date);
-      }
+    _year = currentFix.dateTime.year;
+    _month = currentFix.dateTime.month;
+    _date = currentFix.dateTime.date;
+    }
   else{
   Serial.println(F("No date yet, sorry."));
+    //_year = 66;
+    //_month = 6;
+    //_date = 6;
+    
     //while(true);
   }
 if (currentFix.valid.time) {
@@ -85,11 +105,25 @@ if (currentFix.valid.location) {
     Serial.print( currentFix.latitude() );
     Serial.print( ',' );
     Serial.println( currentFix.longitude() );
+    gps_latitude = currentFix.latitude();
+    gps_longitude = currentFix.longitude();
   }
   else{
   Serial.println(F("No GPS location yet, sorry."));
+   // gps_latitude = 99;
+    //gps_longitude = 99;
     //while(true);
     }
+
+    Serial.print( "Stored coordenates: Lat" ); Serial.print( gps_latitude );Serial.print( ", Lon"); Serial.println( gps_longitude );
+    Serial.print( "Stored date: " );
+    Serial.print( _year ); Serial.print( "-" ); Serial.print( _month ); Serial.print( "-" ); Serial.println( _date );
+  
   }
-delay(100); // a delay to slow down the display 
+    /*Serial.print( "Stored coordenates: Lat" ); Serial.print( gps_latitude );Serial.print( ", Lon"); Serial.println( gps_longitude );
+    Serial.print( "Stored date: " );
+    Serial.print( _year ); Serial.print( "-" ); Serial.print( _month ); Serial.print( "-" ); Serial.println( _date );
+    */
+delay(3000); // a delay just to slow down the display 
+
 }

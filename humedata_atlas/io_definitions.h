@@ -104,8 +104,7 @@ byte gps_longitude_float_bytes[4];
 int _year, _month, _day, _hour, _minutes, _seconds, _centiseconds;
 
 // Voltaje de la batería
-int batt_level = 0;
-float batt_level_float = 0.0;
+int batt_analog = 0;
 
 // Variables generales
 const int rtd_off_pin = 0;
@@ -114,5 +113,5 @@ const int orp_off_pin = 18;
 const int ec_off_pin = 20;
 const int do_off_pin = 19;
 
-const int _data_size = 28;
+const int _data_size = 29;
 float _data[_data_size];

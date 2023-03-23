@@ -22,7 +22,7 @@ const int _data_size = 24;
 float _data[_data_size];
 
 // Battery Level Reading
-int batt_reading = 0;
+int batt_analog = 0;
 float batt_voltage = 0.0;
 
 // GPS 
