@@ -76,7 +76,7 @@ void float2Bytes(float val,byte* bytes_array){
 }
 
 // Tiempo de espera entre muestreado de datos (en minutos)
-const int sleep_time = 5;
+const int sleep_time = 15;
 
 // Objeto GPS
 TinyGPSPlus gps;
