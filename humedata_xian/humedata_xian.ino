@@ -7,8 +7,8 @@
 #include "libs.h"
 
 // Se declaran los tiempos de lectura y adquisición de GPS para el dispositivo
-const int sleep_time = 10; 
-const int gps_fix_time = 8;
+const int sleep_time = 1; 
+const int gps_fix_time = 0;
 
 void setup() 
 {

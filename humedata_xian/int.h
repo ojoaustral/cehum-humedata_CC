@@ -147,7 +147,7 @@ void send_lorawan_data()
   _data_lorawan[7]  =   ec_readings[5];                             // Electrical Conductivity
   _data_lorawan[8]  =   ec_readings[6];                             // Electrical Conductivity
   
-  _data_lorawan[9]   =   tds_float_bytes[0];                         // Total Dissolved Solids    
+  _data_lorawan[9]   =   tds_float_bytes[0];                        // Total Dissolved Solids    
   _data_lorawan[10]  =   tds_float_bytes[1];                        // Total Dissolved Solids    
   _data_lorawan[11]  =   tds_float_bytes[2];                        // Total Dissolved Solids    
   _data_lorawan[12]  =   tds_float_bytes[3];                        // Total Dissolved Solids   
@@ -168,17 +168,17 @@ void send_lorawan_data()
   _data_lorawan[20] =   gps_longitude_float_bytes[1];               // GPS Longitude  
   _data_lorawan[21] =   gps_longitude_float_bytes[2];               // GPS Longitude   
   _data_lorawan[22] =   gps_longitude_float_bytes[3];               // GPS Longitude   
-   
+  
   _data_lorawan[23] =   gps_latitude_float_bytes[0];                // GPS Latitude 
   _data_lorawan[24] =   gps_latitude_float_bytes[1];                // GPS Latitude 
   _data_lorawan[25] =   gps_latitude_float_bytes[2];                // GPS Latitude 
   _data_lorawan[26] =   gps_latitude_float_bytes[3];                // GPS Latitude 
-  
+ 
   _data_lorawan[27] = uint8_t  ((_data[12] + 20) * 255/80.0);       // Internal Temperature
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
   
-  _data_lorawan[29] = uint8_t  (batt_analog - 600);                 // Battery Level (Here don't get why the -600, CC. Anyways, replace by batt_volts.)
+  _data_lorawan[29] = uint8_t  (batt_voltage * 255/15.0);           // Battery voltage
   
   _data_lorawan[30] =   orp_readings[3];                            // ORP
   _data_lorawan[31] =   orp_readings[4];                            // ORP
