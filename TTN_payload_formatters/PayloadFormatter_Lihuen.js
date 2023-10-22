@@ -28,7 +28,7 @@ function decodeUplink(input) {
   data.lat = bytesToFloat(input.bytes.slice(23, 27));
   data.it = (input.bytes[27] * 80 / 255) - 20;
   data.ih = input.bytes[28] * 120 / 255;
-  data.bl = (input.bytes[29] * 13 / 255);
+  data.bl = (input.bytes[29] * 15 / 255);
   data.orp = bytesToFloat(input.bytes.slice(30, 34));
   data.sat = input.bytes[34] * 150 / 255;
   data.do_temp = bytesToFloat(input.bytes.slice(35, 39));
