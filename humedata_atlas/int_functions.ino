@@ -17,8 +17,9 @@ void env_pressure(){
 
 void read_battery_level(){
   batt_analog = analogRead(A1);
+  batt_voltage = 0.24882419 + 0.01756731 * batt_analog;  // Calculate Volts from empirical eq. march 2023, CC.
   _data[14] = batt_analog;
-  _data[29] = 0.24882419 + 0.01756731 * batt_analog;             // Calculate Volts from empirical eq. march 2023, CC.
+  _data[29] = batt_voltage; 
 }
 
 void write_to_sd(float data0, float data1,float data2,float data3,float data4, float data5, float data6, float data7, float data8, float data9, 

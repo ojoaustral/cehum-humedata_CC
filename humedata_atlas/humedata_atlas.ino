@@ -271,9 +271,8 @@ void loop() {
   _data_lorawan[27] = uint8_t  ((_data[12] + 20) * 255/80.0);       // Internal Temperature
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
-  
-  //_data_lorawan[29] = uint8_t  ((_data[14] - 2144.0) * 255.0/670.0);   // Battery Level (Here, I don´t understand the -2144 (CC, march 2023))
-  _data_lorawan[29] = uint8_t  (_data[14] * 255.0/693);   // Battery Level (max(batt_analog, after charging) = 693 (CC, march 2023). I deleted the addition of -2144 before the product; it seemed innecessary. 
+
+  _data_lorawan[29] = uint8_t  (batt_voltage * 255/15.0);           // Battery voltage
   
   _data_lorawan[30] =   orp_float_bytes[0];                            // ORP
   _data_lorawan[31] =   orp_float_bytes[1];                            // ORP
