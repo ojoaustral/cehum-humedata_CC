@@ -7,8 +7,9 @@
 #include "libs.h"
 
 // Se declaran los tiempos de lectura y adquisición de GPS para el dispositivo
-const int sleep_time = 1; 
-const int gps_fix_time = 0;
+const int sleep_time = 5; 
+const int gps_first_fix_time = 10;
+const int gps_fix_time = 2;
 
 void setup() 
 {
@@ -23,9 +24,6 @@ void setup()
   Wire.begin();
   delay(1000);
 
-  //digitalWrite(GPS_SWITCH, HIGH);
-  get_gps_data();
-  delay(1000);
   // Se leen los valores internos y los atmosféricos 
   env_pressure();
   get_atm_values();
@@ -36,23 +34,17 @@ void setup()
   delay(1000);
   read_xian_sensors();
   delay(1000);
+  digitalWrite(GPS_SWITCH, HIGH);
+  delay(gps_first_fix_time)*60*1000);
+  get_gps_data();
   // Se almacenan los datos en la memoria SD y se envían a través de LoRaWAN
   store_sd_data();
   send_lorawan_data();
-  //delay((sleep_time - gps_fix_time)*60*1000);
   LowPower.sleep((sleep_time - gps_fix_time)*60*1000);
 }
 
 void loop() 
 {
-  digitalWrite(GPS_SWITCH, HIGH);
-  delay(gps_fix_time*60*1000);
-
-  // HERE, experimentally silenced line below
-  // LowPower.sleep(gps_fix_time*60*1000);
-  
-  get_gps_data();
-  delay(1000);
   // Se leen los valores internos y los atmosféricos 
   env_pressure();
   get_atm_values();
@@ -62,10 +54,13 @@ void loop()
   read_xian_sensors();
   delay(1000);
   read_xian_ec();
-  delay(1000);
+  digitalWrite(GPS_SWITCH, HIGH);
+  delay(gps_fix_time*60*1000);
+  // HERE, experimentally silenced line below
+  // LowPower.sleep(gps_fix_time*60*1000); // later test if GPS accisition still works with this on
+  get_gps_data();
   // Se almacenan los datos en la memoria SD y se envían a través de LoRaWAN
   store_sd_data();
   send_lorawan_data();
-  //delay((sleep_time - gps_fix_time)*60*1000);
   LowPower.sleep((sleep_time - gps_fix_time)*60*1000);
 }
