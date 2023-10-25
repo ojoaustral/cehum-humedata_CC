@@ -35,7 +35,7 @@ void setup()
   read_xian_sensors();
   delay(1000);
   digitalWrite(GPS_SWITCH, HIGH);
-  delay(gps_first_fix_time)*60*1000);
+  delay(gps_first_fix_time*60*1000);
   get_gps_data();
   // Se almacenan los datos en la memoria SD y se envían a través de LoRaWAN
   store_sd_data();
