@@ -1,4 +1,4 @@
-// Last updted 2023-10-22, CC. 
+// Last updtes 2023-10-22, 2024-01-15 by CC. 
 
 function decodeUplink(input) {
   
@@ -28,7 +28,7 @@ function decodeUplink(input) {
   data.lat = bytesToFloat(input.bytes.slice(23, 27));
   data.it = (input.bytes[27] * 80 / 255) - 20;
   data.ih = input.bytes[28] * 120 / 255;
-  data.bl = (input.bytes[29] * 13 / 255); // only update in TTN after the device's code has the 2023-10-22 update loaded.
+  data.bl = (input.bytes[29] * 4 / 255 + 11);
   data.orp = bytesToFloat(input.bytes.slice(30, 34));
   data.sat = input.bytes[34] * 150 / 255;
   data.do_temp = bytesToFloat(input.bytes.slice(35, 39));

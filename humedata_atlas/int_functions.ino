@@ -15,9 +15,10 @@ void env_pressure(){
   ENV.end();
 }
 
+// Calculate Volts from empirical eq. derived from expe. in march 2023, CC.
 void read_battery_level(){
   batt_analog = analogRead(A1);
-  batt_voltage = 0.24882419 + 0.01756731 * batt_analog;  // Calculate Volts from empirical eq. march 2023, CC.
+  batt_voltage = 0.24882419 + 0.01756731 * batt_analog;  
   _data[14] = batt_analog;
   _data[29] = batt_voltage; 
 }

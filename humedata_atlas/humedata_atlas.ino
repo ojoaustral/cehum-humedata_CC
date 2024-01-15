@@ -1,9 +1,12 @@
 /*
    TITLE: CEHUM - HUMEDAT@ ATLAS
-   AUTHOR: CHRISTIAN SANTIBÁÑEZ SOTO
+   AUTHOR: CHRISTIAN SANTIBÁÑEZ SOTO (V. 1.0)
    COMPANY: LEUFÜLAB
    DATE: 12/01/2022
-   VERSION: 1.0
+   VERSION: 1.2 modified by C. Correa
+   Centro de Humedales Río Cruces (CEHUM)
+   Universidad Austral de Chile
+   Contact: cristiancorrea@gmail.com
 */
 
 // Librerías
@@ -272,7 +275,7 @@ void loop() {
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
 
-  _data_lorawan[29] = uint8_t  (batt_voltage * 255/15.0);           // Battery voltage
+  _data_lorawan[29] = uint8_t  (batt_voltage -11 * 255/4);           // Battery voltage
   
   _data_lorawan[30] =   orp_float_bytes[0];                            // ORP
   _data_lorawan[31] =   orp_float_bytes[1];                            // ORP
