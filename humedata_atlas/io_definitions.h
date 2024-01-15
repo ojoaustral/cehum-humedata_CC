@@ -105,6 +105,7 @@ int _year, _month, _day, _hour, _minutes, _seconds, _centiseconds;
 
 // Voltaje de la batería
 int batt_analog = 0;
+float batt_voltage = 0;
 
 // Variables generales
 const int rtd_off_pin = 0;
