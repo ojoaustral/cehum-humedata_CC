@@ -1,7 +1,8 @@
 void read_xian_sensors()
 {
   // Se apaga el módulo GPS para que no interfiera con la lectura de los sensores Xi'An
-  digitalWrite(GPS_SWITCH, LOW);
+  //digitalWrite(GPS_SWITCH, LOW);
+  digitalWrite(GPS_MOSFET,LOW);
   digitalWrite(EC_SWITCH, LOW);
   // Se encienden los sensores Xi'An y también el módulo RS-485
   digitalWrite(XIAN_SWITCH, HIGH);
@@ -119,7 +120,8 @@ void read_xian_sensors()
 void read_xian_ec()
 {
   // Se apaga el módulo GPS y los sensores Xi'An para que no interfiera con la lectura del sensor EC
-  digitalWrite(GPS_SWITCH, LOW);
+ // digitalWrite(GPS_SWITCH, LOW);
+ digitalWrite(GPS_MOSFET,LOW);
   digitalWrite(XIAN_SWITCH, HIGH);
   digitalWrite(EC_SWITCH, HIGH);
   digitalWrite(RS485_SWITCH, HIGH);
