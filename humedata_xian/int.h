@@ -125,8 +125,8 @@ void store_sd_data()
   
 
   write_to_sd(_data[0],_data[1],_data[2],_data[3],_data[4],_data[5],_data[6],_data[7],_data[8],
-  _data[9],_data[10],_data[11], _data[12], _data[13], _data[14], _data[15], _data[16], _year,
-  _month, _day, _hour, _minutes, _seconds, _data[23]);
+  _data[9],_data[10],_data[11],_data[12],_data[13],_data[14],_data[15],_data[16],_data[17],
+  _data[18],_data[19],_data[20],_data[21],_data[22],_data[23]);
 }
 
 void send_lorawan_data()
