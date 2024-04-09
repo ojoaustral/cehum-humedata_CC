@@ -39,33 +39,38 @@ void get_real_time(){
 }
 
 void get_gps_data(){
-  ciclo=0;                                        //Variable de número de muestras de posicion del GPS 
+  ciclo = 0;                                        //Variable de número de muestras de posicion del GPS 
   digitalWrite(XIAN_SWITCH, LOW);                 // Se apagan los sensores Xi'An y se enciende el GPS
   digitalWrite(RS485_SWITCH, LOW);
   digitalWrite(EC_SWITCH, LOW);
   digitalWrite(GPS_MOSFET, HIGH);
   Serial.println("GPS ON");                       //Se muestra en el monitor serial el estado del GPS
+  on = 1;
   delay(2000); 
-  while(Serial1.available() > 0){
-    result = Serial1.available();        
-    if((gps.encode(Serial1.read())) && (digitalRead(GPS_MOSFET) == HIGH)  &&  (ciclo<=49)){ //Condiciones para la lectura del GPS
-      gps_latitude = gps.location.lat();           //Si se requiere un distinto tiempo de cold start modificar el numero de ciclo según la ec. 
-      gps_longitude = gps.location.lng();           //ciclo=((min*60)/5)+1                                                
-      //Serial.print("Ciclo: "); Serial.println(ciclo);
-      // Serial.print("Lon: "); Serial.println(gps_longitude);
-      // Serial.print("Lat: "); Serial.println(gps_latitude);
-      delay(5000);                                                                        //Tiempo de duración del ciclo
-      if(ciclo<48){                                                                       //Actualizacion de ciclo actual
+  if (on == 1){
+    while(Serial1.available() > 0){
+      result = Serial1.available();        
+      if((gps.encode(Serial1.read())) && (digitalRead(GPS_MOSFET) == HIGH)  &&  (ciclo<=49)){ //Condiciones para la lectura del GPS
+        gps_latitude = gps.location.lat();           //Si se requiere un distinto tiempo de cold start modificar el numero de ciclo según la ec. 
+        gps_longitude = gps.location.lng();           //ciclo=((min*60)/5)+1                                                
+        //Serial.print("Ciclo: "); Serial.println(ciclo);
+        // Serial.print("Lon: "); Serial.println(gps_longitude);
+        // Serial.print("Lat: "); Serial.println(gps_latitude);
+        delay(5000);                                                                        //Tiempo de duración del ciclo
+        if(ciclo<48){                                                                       //Actualizacion de ciclo actual
           ciclo=ciclo+1;
         }
-      if(ciclo==48){                                                                      // Se apaga el GPS
-        digitalWrite(GPS_MOSFET,LOW);
-        Serial.println("GPS OFF");
+        if(ciclo==48){                                                                      // Se apaga el GPS
+          digitalWrite(GPS_MOSFET,LOW);
+          Serial.println("GPS OFF");
+          on = 0;
+        }
       }
-    }
+    } 
   }
   _data[11] = gps_longitude;
   _data[10] = gps_latitude;
   digitalWrite(GPS_MOSFET,LOW);
+  on = 0;
   delay(2000);
 }

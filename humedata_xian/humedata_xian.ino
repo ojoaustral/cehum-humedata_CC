@@ -37,13 +37,6 @@ void setup()
 
   //digitalWrite(GPS_SWITCH, HIGH);
   //digitalWrite(GPS_MOSFET, HIGH);
-  
-  get_gps_data();
-  delay(1000);
-  
-  //Se obtiene el valor de tiempo real
-  get_real_time();
-  delay(1000); //1seg
 
   // Se leen los valores internos y los atmosféricos 
   env_pressure();
@@ -54,6 +47,13 @@ void setup()
   read_xian_ec();
   delay(1000); //1seg
   read_xian_sensors();
+  delay(1000); //1seg
+  //Se obtienen los datos del GPS
+  get_gps_data();
+  digitalWrite(GPS_MOSFET, LOW);
+  delay(12000);
+  //Se obtiene el valor de tiempo real
+  get_real_time();
   delay(1000); //1seg
   // Se almacenan los datos en la memoria SD y se envían a través de LoRaWAN
   store_sd_data();
@@ -68,14 +68,6 @@ void loop()
   //digitalWrite(GPS_MOSFET, HIGH);
   delay(gps_fix_time*60*1000);
 
-  //Se obtienen los datos del GPS
-  get_gps_data();
-  delay(4000); //1seg
-
-  //Se obtiene el valor de tiempo real 
-  get_real_time();
-  delay(1000); //1seg
-
   // Se leen los valores internos y los atmosféricos 
   env_pressure();
   get_atm_values();
@@ -85,6 +77,13 @@ void loop()
   read_xian_sensors();
   delay(1000); //1seg      
   read_xian_ec();
+  delay(1000); //1seg
+  //Se obtienen los datos del GPS
+  get_gps_data();
+  digitalWrite(GPS_MOSFET, LOW);
+  delay(10000); //1seg
+  //Se obtiene el valor de tiempo real 
+  get_real_time();
   delay(1000); //1seg
   // Se almacenan los datos en la memoria SD y se envían a través de LoRaWAN
   store_sd_data();

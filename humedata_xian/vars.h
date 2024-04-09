@@ -35,6 +35,7 @@ float gps_latitude = 0.0;
 float gps_longitude = 0.0;
 int result = 999; // figure out why I'm getting values where thre is none 
 int ciclo = 0;
+int on = 1;
 // Christian ojo que el valor original de TinyGPS++ es double, supongo que float igual recibe un double aproximado  
 byte gps_latitude_float_bytes[4];
 byte gps_longitude_float_bytes[4];
