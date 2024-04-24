@@ -34,12 +34,8 @@ void do_wire_transmission(){
 
 void do_temp_wire_transmission(){
   Wire.beginTransmission(do_address);
-  Wire.write("t,");
+  Wire.write("rt,");
   Wire.write(inst_temp.c_str());
-  Wire.endTransmission();
-  delay(300);
-  Wire.beginTransmission(do_address);
-  Wire.write('r');
   Wire.endTransmission();
   delay(do_time);
   Wire.requestFrom(do_address, 20, 1);
@@ -73,11 +69,7 @@ void do_temp_wire_transmission(){
 
 void do_15_wire_transmission(){
   Wire.beginTransmission(do_address);
-  Wire.write("t,15.0");
-  Wire.endTransmission();
-  delay(300);
-  Wire.beginTransmission(do_address);
-  Wire.write('r');
+  Wire.write("rt,15.0");
   Wire.endTransmission();
   delay(do_time);
   Wire.requestFrom(do_address, 20, 1);
@@ -134,12 +126,8 @@ void ph_wire_transmission(){
 
 void ph_temp_wire_transmission(){
   Wire.beginTransmission(ph_address);
-  Wire.write("t,");
+  Wire.write("rt,");
   Wire.write(inst_temp.c_str());
-  Wire.endTransmission();
-  delay(300);
-  Wire.beginTransmission(ph_address);
-  Wire.write('r');
   Wire.endTransmission();
   delay(ph_time);
   Wire.requestFrom(ph_address, 20, 1);
@@ -201,12 +189,8 @@ void ec_wire_transmission(){
 
 void ec_temp_wire_transmission(){
   Wire.beginTransmission(ec_address);
-  Wire.write("t,");
+  Wire.write("rt,");
   Wire.write(inst_temp.c_str());
-  Wire.endTransmission();
-  delay(300);
-  Wire.beginTransmission(ec_address);
-  Wire.write('r');
   Wire.endTransmission();
   delay(ec_time);
   Wire.requestFrom(ec_address, 32, 1);

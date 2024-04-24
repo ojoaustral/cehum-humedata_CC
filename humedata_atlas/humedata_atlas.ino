@@ -275,7 +275,7 @@ void loop() {
   
   _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
 
-  _data_lorawan[29] = uint8_t  ((batt_voltage -11) * 255/4);           // Battery voltage
+  _data_lorawan[29] = uint8_t  ((batt_voltage -9) * 255/6);           // Battery voltage
   
   _data_lorawan[30] =   orp_float_bytes[0];                            // ORP
   _data_lorawan[31] =   orp_float_bytes[1];                            // ORP

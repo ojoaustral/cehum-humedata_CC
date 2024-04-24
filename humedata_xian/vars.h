@@ -1,7 +1,9 @@
 // Datos LoRaWAN para el acceso a la red de los dispositivos
 LoRaModem modem;
+
 // String devEUI = "A8610A3233298409"; // --> ALPHA 
 // String devEUI = "A8610A3237277009"; // --> ATLAS 
+
 String devEUI = "A8610A3237267209"; // --> XI'AN
 String appEui = "70B3D57ED0042E7E";
 String appKey = "1195AF29AFFE1665C5AF311B4DE62D5A";
