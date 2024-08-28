@@ -3,7 +3,6 @@ void env_pressure()
   ENV.begin();
   internal_pressure = ENV.readPressure();
   _data[7] = internal_pressure;
-
   internal_temperature = ENV.readTemperature();
   _data[12] = internal_temperature;
 
@@ -15,6 +14,7 @@ void env_pressure()
 
 void read_battery_level()
 {
+  delay(1000);
   batt_analog = analogRead(A1); // batt_analog comes straight from the Analog to digital converter.
   batt_voltage = 0.01569447*batt_analog + 0.02719791;  // Empirical equation from experiment run in march 2023 by CC.  
   _data[14] = batt_voltage;
@@ -79,7 +79,7 @@ void write_to_sd(float data0, float data1,float data2,float data3,float data4,
   dataFile.print(",");
   dataFile.print(data22);
   dataFile.print(",");
-  dataFile.println(data23);
+  dataFile.println(data23);              // Ultima variable guardada en el SD debe ir con un println para que el .csv no guarde de manera incorrecta los datos.
   
   dataFile.close();
   delay(1000);
@@ -134,58 +134,66 @@ void send_lorawan_data()
   float2Bytes(gps_latitude,&gps_latitude_float_bytes[0]);
   float2Bytes(gps_longitude,&gps_longitude_float_bytes[0]);
   float2Bytes(tds,&tds_float_bytes[0]);
-
-  _data_lorawan[0]  = do_readings[11];                              // DO 
-  _data_lorawan[1]  = do_readings[12];                              // DO 
-  _data_lorawan[2]  = do_readings[13];                              // DO 
-  _data_lorawan[3]  = do_readings[14];                              // DO 
+  
+  //_data_lorawan[0]  = do_readings[11];                              // DO-LSB
+  _data_lorawan[0]  = do_readings[12];                              // DO 
+  _data_lorawan[1]  = do_readings[13];                              // DO 
+  _data_lorawan[2]  = do_readings[14];                              // DO-MSB
     
-  _data_lorawan[4]  = uint8_t  (_data[1]  * 255/14.0);              // pH   
+  _data_lorawan[3]  = uint8_t  ((_data[1]) * 255/14.0);              // pH   
                        
-  _data_lorawan[5]  =   ec_readings[3];                             // Electrical Conductivity
-  _data_lorawan[6]  =   ec_readings[4];                             // Electrical Conductivity
-  _data_lorawan[7]  =   ec_readings[5];                             // Electrical Conductivity
-  _data_lorawan[8]  =   ec_readings[6];                             // Electrical Conductivity
+  //_data_lorawan[4]  =   ec_readings[3];                             // Electrical Conductivity-LSB
+  _data_lorawan[4]  =   ec_readings[4];                             // Electrical Conductivity
+  _data_lorawan[5]  =   ec_readings[5];                             // Electrical Conductivity
+  _data_lorawan[6]  =   ec_readings[6];                             // Electrical Conductivity-MSB
   
-  _data_lorawan[9]   =   tds_float_bytes[0];                        // Total Dissolved Solids    
-  _data_lorawan[10]  =   tds_float_bytes[1];                        // Total Dissolved Solids    
-  _data_lorawan[11]  =   tds_float_bytes[2];                        // Total Dissolved Solids    
-  _data_lorawan[12]  =   tds_float_bytes[3];                        // Total Dissolved Solids   
+  //_data_lorawan[9]   =   tds_float_bytes[0];                      // Total Dissolved Solids-LSB 
+  _data_lorawan[7]  =   tds_float_bytes[1];                        // Total Dissolved Solids    
+  _data_lorawan[8]  =   tds_float_bytes[2];                        // Total Dissolved Solids    
+  _data_lorawan[9]  =   tds_float_bytes[3];                        // Total Dissolved Solids-MSB  
    
-  _data_lorawan[13]  = uint8_t  (_data[4]  * 255/42.0);             // Salinity  
+  _data_lorawan[10]  = uint8_t  (_data[4]  * 255/42.0);             // Salinity  
      
-  _data_lorawan[14]  = uint8_t  ((_data[5] - 1) * 255/0.3);         // Relative Density   
+  _data_lorawan[11]  = uint8_t  ((_data[5] - 1) * 255/0.3);         // Relative Density   
    
-  _data_lorawan[15]  = uint8_t  (_data[6]  * 255/60.0);             // Water Temperature 
+  _data_lorawan[12]  = uint8_t  (_data[6]  * 255/60.0);             // Water Temperature 
   
-  _data_lorawan[16]  = uint8_t  ((_data[7] - 80) * 255/120.0);      // Internal Pressure
+  _data_lorawan[13]  = uint8_t  ((_data[7] - 85) * 255/60);      // Internal Pressure
     
-  _data_lorawan[17]  = uint8_t  ((_data[8]  - 80) * 255/40.0);      // Atmospheric Pressure 
+  _data_lorawan[14]  = uint8_t  ((_data[8] - 85) * 255/19);      // Atmospheric Pressure 
    
-  _data_lorawan[18]  = uint8_t  ((_data[9] + 20) * 255/80.0);       // Atmospheric Temperature   
+  _data_lorawan[15]  = uint8_t  ((_data[9] + 20) * 255/80.0);       // Atmospheric Temperature   
   
-  _data_lorawan[19] =   gps_longitude_float_bytes[0];               // GPS Longitude      
-  _data_lorawan[20] =   gps_longitude_float_bytes[1];               // GPS Longitude  
-  _data_lorawan[21] =   gps_longitude_float_bytes[2];               // GPS Longitude   
-  _data_lorawan[22] =   gps_longitude_float_bytes[3];               // GPS Longitude   
+  _data_lorawan[16] =   gps_longitude_float_bytes[0];               // GPS Longitude-LSB    
+  _data_lorawan[17] =   gps_longitude_float_bytes[1];               // GPS Longitude  
+  _data_lorawan[18] =   gps_longitude_float_bytes[2];               // GPS Longitude   
+  _data_lorawan[19] =   gps_longitude_float_bytes[3];               // GPS Longitude-MSB
   
-  _data_lorawan[23] =   gps_latitude_float_bytes[0];                // GPS Latitude 
-  _data_lorawan[24] =   gps_latitude_float_bytes[1];                // GPS Latitude 
-  _data_lorawan[25] =   gps_latitude_float_bytes[2];                // GPS Latitude 
-  _data_lorawan[26] =   gps_latitude_float_bytes[3];                // GPS Latitude 
+  _data_lorawan[20] =   gps_latitude_float_bytes[0];                // GPS Latitude-LSB
+  _data_lorawan[21] =   gps_latitude_float_bytes[1];                // GPS Latitude 
+  _data_lorawan[22] =   gps_latitude_float_bytes[2];                // GPS Latitude 
+  _data_lorawan[23] =   gps_latitude_float_bytes[3];                // GPS Latitude-MSB
  
-  _data_lorawan[27] = uint8_t  ((_data[12] + 20) * 255/80.0);       // Internal Temperature
+  _data_lorawan[24] = uint8_t  ((_data[12] + 20) * 255/80.0);       // Internal Temperature
   
-  _data_lorawan[28] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
+  _data_lorawan[25] = uint8_t  (_data[13] * 255/120.0);             // Internal Humidity 
   
-  _data_lorawan[29] = uint8_t  (batt_voltage * 255/15.0);           // Battery voltage
+  _data_lorawan[26] = uint8_t  (batt_voltage * 255/15.0);           // Battery voltage
   
-  _data_lorawan[30] =   orp_readings[3];                            // ORP
-  _data_lorawan[31] =   orp_readings[4];                            // ORP
-  _data_lorawan[32] =   orp_readings[5];                            // ORP
-  _data_lorawan[33] =   orp_readings[6];                            // ORP
+  //_data_lorawan[30] =   orp_readings[3];                            // ORP-LSB
+  //_data_lorawan[31] =   orp_readings[4];                            // ORP
+  _data_lorawan[27] =   orp_readings[5];                            // ORP
+  _data_lorawan[28] =   orp_readings[6];                            // ORP-MSB
   
-  _data_lorawan[34] = uint8_t (sat_f * 255/150);                    // SAT
+  _data_lorawan[29] = uint8_t (sat_f * 255/150);                    // SAT
+
+  _data_lorawan[44] = uint8_t (_data[17]-2000);             // Year
+  _data_lorawan[45] = uint8_t (_data[18]);                  // Month
+  _data_lorawan[46] = uint8_t (_data[19]);                  // Day
+
+  _data_lorawan[47] = uint8_t (_data[20]);                  // Hour
+  _data_lorawan[48] = uint8_t (_data[21]);                  // Minutes
+  _data_lorawan[49] = uint8_t (_data[22]);                  // Seconds
   
   Serial.println("LORAWAN HEX DATA: ");
   
@@ -249,6 +257,8 @@ void send_lorawan_data()
   modem.write(_data_lorawan[46]);
   modem.write(_data_lorawan[47]);
   modem.write(_data_lorawan[48]);
+  modem.write(_data_lorawan[49]);
+  modem.write(_data_lorawan[50]);  
   
   err = modem.endPacket(true);
 

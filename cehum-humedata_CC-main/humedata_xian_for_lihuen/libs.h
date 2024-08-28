@@ -4,6 +4,7 @@
 #include <SD.h>
 #include <MKRWAN.h>
 #include <Adafruit_BMP280.h>
+#include <RTClib.h>
 #include <DS3232RTC.h>     
 #include <TimeLib.h>
 #include "Arduino.h"

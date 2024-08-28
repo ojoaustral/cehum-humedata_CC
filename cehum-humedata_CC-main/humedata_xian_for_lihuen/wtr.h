@@ -1,7 +1,7 @@
 void read_xian_sensors()
 {
   // Se apaga el módulo GPS para que no interfiera con la lectura de los sensores Xi'An
-  //digitalWrite(GPS_SWITCH, LOW);
+  digitalWrite(GPS_SWITCH, LOW);
   digitalWrite(GPS_MOSFET,LOW);
   digitalWrite(EC_SWITCH, LOW);
   // Se encienden los sensores Xi'An y también el módulo RS-485
@@ -97,9 +97,14 @@ void read_xian_sensors()
           reading_tries++;
         }
     }
-
+    Serial.print("pH or: ");
+    Serial.println(ph_f);
+    Serial.println(temp_f);
+    ph_c = -27.373397164+2.253271740*temp_f+5.144430003*ph_f-0.046916848*pow(temp_f,2)-0.310215606*(temp_f*ph_f)+0.006367488*(pow(temp_f,2)*ph_f);
+    Serial.print("pH c: ");
+    Serial.println(ph_c);
     _data[0] = do_f;
-    _data[1] = ph_f;
+    _data[1] = ph_c;
     _data[3] = 0;
     _data[4] = 0;
     _data[5] = 0;
@@ -120,7 +125,7 @@ void read_xian_sensors()
 void read_xian_ec()
 {
   // Se apaga el módulo GPS y los sensores Xi'An para que no interfiera con la lectura del sensor EC
- // digitalWrite(GPS_SWITCH, LOW);
+  digitalWrite(GPS_SWITCH, LOW);
   digitalWrite(GPS_MOSFET,LOW);
   digitalWrite(XIAN_SWITCH, HIGH);
   digitalWrite(EC_SWITCH, HIGH);
