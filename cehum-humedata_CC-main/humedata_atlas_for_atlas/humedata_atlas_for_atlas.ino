@@ -182,7 +182,7 @@ void loop() {
 
   // Se obtiene la medición de temperatura del agua y se almacena el dato para utilizarlo posteriormente en la petición de datos con ajuste de temperatura
   rtd_wire_transmission();
-  inst_temp = String(_data[6]); // Variable utilizada para el ajuste de temperatura
+  inst_temp = String(_data[6]); // Variable utilizada para el ajuste de temperatura que viene de rtd_wire_transmission()
   // Se solicitan las mediciones de los sensores Atlas Scientific (En orden: DO, pH, EC, ORP, DOtemp, ECtemp, DO15ºC, pHtemp)
   delay(1000);
   do_wire_transmission();

@@ -62,7 +62,7 @@ void read_xian_sensors()
     }
     
     reading_tries = 0;
-    while((do_received == 0) && (reading_tries < 5))
+    while((do_received == 0) && (reading_tries < 11))
     {
       for(int i=0; i<8; i++)
       {

@@ -1,6 +1,6 @@
 
 // Código para poner el módulo reloj a la hora y asegurar una correcta serie de tiempo.
-// Para aplicar este código, Desconectar el módulo RTC de Humedata y conectarlo a un Arduino 
+// Para aplicar este código, desconectar el módulo RTC 3231 de Humedata y conectarlo a un Arduino 
 
 // Pinning (tested in Arduino Nano)
 // SDA to A4 (on most Arduinos like the UNO)
@@ -14,7 +14,11 @@
 // Este código, por defecto, toma la hora de compilación de este sketch y se la pasa al módulo reloj. 
 // En la siguiente línea debes definir el ajuste horario que se le aplicará a la hora de tu PC para conseguir UTC-4.  
 
+
+// HERE agregar una funsion condicional para adaptar el ajuste automaticamente, o solicitar directamente UTC-4 en lugar de la hora por defecto del sistema. 
+
 int hour_adjustment = -1; // Apply -1 in summer time, and 0 in witer time so as to achieve UTC-4. 
+
 
 // Una vez revisada la línea anterior, compila/sube este sketch completo a tu Arduino conectado al módulo reloj, 
 // abre el monitor serial, y confirma que aparece la hora correcta en UTC-4. 
