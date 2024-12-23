@@ -1,0 +1,34 @@
+{
+  "name": "2024-1-s1-grupo1",
+  "private": true,
+  "scripts": {
+    "build": "pnpm db:generate && turbo build",
+    "web:build": "pnpm db:generate && pnpm --filter=frontend build",
+    "backend:build": "pnpm db:generate && pnpm --filter=backend build",
+    "db:generate": "pnpm --filter=backend run db:generate",
+    "backend:dev": "dotenv -e .env.local -- turbo dev --filter=backend",
+    "web:dev": "dotenv -e .env.local -- turbo dev --filter=frontend --filter=backend",
+    "mobile:dev": "dotenv -e .env.local -- turbo dev --filter=mobile --filter=backend",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "backend:test": "dotenv -e .env.local -- turbo test --filter=backend",
+    "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "sherif": "pnpm dlx sherif@latest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.0.4",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@repo/eslint-config": "workspace: *",
+    "@repo/typescript-config": "workspace: *",
+    "@types/node": "^20",
+    "dotenv-cli": "^7.4.1",
+    "prettier": "^3.2.5",
+    "turbo": "^1.13.2"
+  }
+}

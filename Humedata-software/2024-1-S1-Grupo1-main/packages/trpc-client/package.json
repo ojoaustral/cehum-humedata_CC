@@ -1,0 +1,14 @@
+{
+  "name": "@repo/trpc-client",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "devDependencies": {
+    "@repo/eslint-config": "workspace: *",
+    "@repo/typescript-config": "workspace: *",
+    "backend": "workspace: *"
+  }
+}

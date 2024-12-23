@@ -1,0 +1,51 @@
+name: Check Issues by Commit Hashes
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-issues:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install jq git -y
+
+      - name: 'PR commits + 1'
+        run: echo "PR_FETCH_DEPTH=$(( ${{ github.event.pull_request.commits }} + 1 ))" >> "${GITHUB_ENV}"
+      
+      - name: 'Checkout PR branch and all PR commits'
+        uses: actions/checkout@v4
+        with:
+            ref: ${{ github.event.pull_request.head.sha }}
+            fetch-depth: ${{ env.PR_FETCH_DEPTH }}
+
+      - name: Get list of all SHA hashes in the PR
+        run: |
+          echo "Fetching all commit SHAs..."
+          shas=$(git log --pretty=format:"%H")
+          echo "SHAS<<EOF" >> $GITHUB_ENV
+          echo "$shas" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Use SHA hashes (Match issues with commits)
+        run: |
+          sha_list=$(echo "$SHAS" | tr '\n' ' ')
+          for sha in $sha_list; do
+            matching=$(gh issue list --search "'$sha' in:title")
+            if [ -z "$matching" ]; then
+              echo "No issues found for commit $sha."
+            else
+              echo "Issues found for commit $sha:"
+              if echo "$matching" | grep -q "closed"; then
+                echo "Issue is closed."
+              else
+                echo "YOU MUST CLOSE ALL ISSUE RELATED TO THIS PR BEFORE MERGING"
+                exit 1
+              fi
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GH_API_KEY }}
+          GH_REPO: ${{ github.repository }}

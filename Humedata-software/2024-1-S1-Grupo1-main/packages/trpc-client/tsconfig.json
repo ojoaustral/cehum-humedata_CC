@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/typescript-config/react-library.json",
+  "references": [{ "path": "../../apps/backend" }],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@backend/*": ["../../apps/backend/src/*"],
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
+}

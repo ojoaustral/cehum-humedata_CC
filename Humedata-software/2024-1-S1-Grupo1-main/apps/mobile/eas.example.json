@@ -1,0 +1,42 @@
+{
+  "cli": {
+    "version": ">= 4.1.2"
+  },
+  "build": {
+    "base": {
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "",
+        "SENTRY_PROJECT": "",
+        "SENTRY_ORG": "",
+        "SENTRY_AUTH_TOKEN": ""
+      }
+    },
+    "production": {
+      "extends": "base",
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "",
+        "SENTRY_PROJECT": "",
+        "SENTRY_ORG": "",
+        "SENTRY_AUTH_TOKEN": ""
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

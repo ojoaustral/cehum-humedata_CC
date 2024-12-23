@@ -1,0 +1,16 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+    "outDir": "./dist",
+  },
+  "include": [
+    "jest.config.ts",
+    "./src/**/*.ts",
+  ],
+  "exclude": ["./dist", "node_modules"]
+}

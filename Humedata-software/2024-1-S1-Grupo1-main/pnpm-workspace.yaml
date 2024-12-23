@@ -1,0 +1,4 @@
+packages:
+  - 'packages/typescript-config'
+  - 'apps/*'
+  - 'packages/*'

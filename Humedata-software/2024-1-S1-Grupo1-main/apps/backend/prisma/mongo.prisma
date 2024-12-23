@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/mongo-client"
+}
+
+datasource mongodb {
+  provider = "mongodb"
+  url      = env("MONGO_URL")
+}
+
+
+model User {
+  id              String   @id @default(auto()) @map("_id") @mongodb.ObjectId
+  clerkId         String   @unique
+  email           String   @unique
+  username        String?  @unique
+  type            String   @default("USER")
+  firstName       String?
+  lastName        String?
+  publicMetadata  Json?
+  privateMetadata Json?
+  status          String?
+  organizations   UsersOnOrganizations[]
+}
+
+model UsersOnOrganizations { // modelo necesario para relacion n-n
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId  // implementacion en mongo requiere este id
+  user           User          @relation(fields: [userId], references: [id])
+  userId         String        @mongodb.ObjectId
+  organization   Organization  @relation(fields: [organizationId], references: [id])
+  organizationId String        @mongodb.ObjectId
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  role            String?  @default("USER")
+  @@unique([userId, organizationId])
+}
+
+
+model Organization {
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  name           String
+  orgId          String?
+  users          UsersOnOrganizations[]
+  locations      Location[]// Locations
+  metadata       Json?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Location {
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  name           String
+  organizationId String        @mongodb.ObjectId
+  organization   Organization  @relation(fields: [organizationId], references: [id])
+  zones          Zone[]
+  variables      Variable[]
+  latitude       Float?
+  longitude      Float?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Zone {
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  name           String
+  locationId     String        @mongodb.ObjectId
+  location       Location      @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  max_latitude   Float?
+  min_latitude   Float?
+  max_longitude  Float?
+  min_longitude  Float?
+  humedatas      Humedata[]
+  notes          Notes[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Humedata {
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  externalId     String?
+  zoneId         String        @mongodb.ObjectId
+  zone           Zone          @relation(fields: [zoneId], references: [id])
+  status         String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Notes {
+  id             String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  zoneId         String        @mongodb.ObjectId
+  zone           Zone          @relation(fields: [zoneId], references: [id], onDelete: Cascade)
+  type           String        @default("GENERAL")
+  content        String?
+  tag            String?
+  start_date     DateTime?
+  end_date       DateTime?
+  params_id      String[]      @default([])
+  timestamp      DateTime
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model DownloadRecord {
+  id               String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  userId           String?        
+  user_mail         String?
+  organization     String        
+  location_name    String
+  params_id        String[]
+  zones_id         String[]
+  start_date       DateTime
+  end_date         DateTime
+  download_date    DateTime      @default(now())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Variable {
+  id               String        @id @default(auto()) @map("_id") @mongodb.ObjectId
+  locationId       String        @mongodb.ObjectId
+  location         Location      @relation(fields: [locationId], references: [id])
+  formula          String
+  params           String[]   
+  name             String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
