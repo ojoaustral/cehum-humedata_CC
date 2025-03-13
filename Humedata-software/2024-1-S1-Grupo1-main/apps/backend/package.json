@@ -6,7 +6,7 @@
     "dev": "pnpm db:generate && nodemon src/index.ts",
     "start": "node ./dist/src/index.js",
     "db:generate": "prisma generate --schema prisma/cehum.prisma && prisma generate --schema prisma/mongo.prisma",
-    "copy:types": "cp -r src/generated dist/src",
+    "copy:types": "xcopy src\\generated dist\\src /E /I /Y",
     "build": "tsc && pnpm copy:types",
     "lint": "eslint .",
     "test": "jest"
