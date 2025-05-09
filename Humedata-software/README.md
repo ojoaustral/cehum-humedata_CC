@@ -4,3 +4,9 @@ En esta carpeta se encuentran todos los elementos necesarios del Humedata-softwa
 
 * El código fuente
 * Manual de lanzamiento
+
+Actualmente hay un test público subido en vercel de la aplicación web Humedat@.
+> Frontend:
+[link](https://test-humedata-frontend.vercel.app)
+> Backend:
+[link](https://y48fprn6r7.us-east-2.awsapprunner.com)
