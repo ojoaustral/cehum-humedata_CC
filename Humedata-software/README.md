@@ -4,4 +4,3 @@ En esta carpeta se encuentran todos los elementos necesarios del Humedata-softwa
 
 * El código fuente
 * Manual de lanzamiento
-* Build de la aplicación móvil
