@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../src/generated/cehum-client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("CEHUM_URL")
+}
+
+model Humedata_devices {
+  id      Int     @id @default(autoincrement()) @db.UnsignedInt
+  dev_eui String? @db.VarChar(16)
+}
+
+model logs {
+  id                        Int       @id @default(autoincrement())
+  atmospheric_pressure      Float?    @db.Float
+  atmospheric_temperature   Float?    @db.Float
+  battery_level             Float?    @db.Float
+  dissolved_oxygen          Float?    @db.Float
+  electrical_conductivity   Float?    @db.Float
+  internal_humidity         Float?    @db.Float
+  internal_pressure         Float?    @db.Float
+  internal_temperature      Float?    @db.Float
+  latitude                  Float?    @db.Float
+  longitude                 Float?    @db.Float
+  oxide_reduction_potential Float?    @db.Float
+  ph                        Float?    @db.Float
+  relative_density          Float?    @db.Float
+  salinity                  Float?    @db.Float
+  total_dissolved_solids    Float?    @db.Float
+  water_temperature         Float?    @db.Float
+  timestamp                 DateTime? @default(now()) @db.DateTime(0)
+  dev_id                    Int       @default(1)
+  do_15                     Float?    @db.Float
+  do_temp                   Float?    @db.Float
+  ec_temp                   Float?    @db.Float
+  sat_temp                  Float?    @db.Float
+  sat                       Float?    @db.Float
+  ph_temp                   Float?    @db.Float
+}

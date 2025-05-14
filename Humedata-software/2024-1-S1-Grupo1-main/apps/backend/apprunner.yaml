@@ -1,0 +1,24 @@
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    pre-build:
+      - npm install -g pnpm
+      - corepack enable pnpm
+      - pnpm install
+    build:
+      - pnpm run db:generate
+      - pnpm run build
+run:
+  command: node ./dist/src/index.js
+  network:
+    port: 4000
+  secrets:
+    - name: MONGO_URL
+      value-from: "arn:aws:secretsmanager:us-east-2:339712862943:secret:production:MONGO_URL::"
+    - name: CEHUM_URL
+      value-from: "arn:aws:secretsmanager:us-east-2:339712862943:secret:production:CEHUM_URL::"
+    - name: CLERK_SECRET_KEY
+      value-from: "arn:aws:secretsmanager:us-east-2:339712862943:secret:production:CLERK_SECRET_KEY::"
+    - name: CLERK_PUBLISHABLE_KEY
+      value-from: "arn:aws:secretsmanager:us-east-2:339712862943:secret:production:CLERK_PUBLISHABLE_KEY::"

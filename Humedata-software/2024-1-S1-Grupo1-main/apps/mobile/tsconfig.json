@@ -1,0 +1,23 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "references": [{ "path": "../../apps/backend" }],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@backend/*": ["../../apps/backend/src/*"],
+      "@trpc-client/*": ["../../packages/trpc-client/*"]
+    },
+    "types": ["nativewind/types"]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "index.js",
+    "babel.config.js",
+    "metro.config.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
+}

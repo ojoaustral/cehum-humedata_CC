@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "2024-1-s1-grupo1",
+    "slug": "2024-1-s1-grupo1",
+    "version": "1.0.0",
+    "sdkVersion": "50.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.mobileAppGrupo1"
+    },
+    "ios": {
+      "bundleIdentifier": "com.mobileAppGrupo1"
+    }
+  }
+}
