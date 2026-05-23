@@ -12,6 +12,22 @@
 <img src="images/logo_uach.png" alt="Leufulab logo" height="150"/>
 </p>
 
+## Table of Contents
+
+- [What is Humedat@?](#what-is-humedat)
+- [Project team and contributors](#project-team-and-contributors)
+- [Funding and support](#funding-and-support)
+- [Repository Contents](#repository-contents)
+- [How the System Works](#how-the-system-works)
+- [Hardware Overview](#hardware-overview)
+- [Software Features](#software-features)
+  - [Web Application](#web-application)
+  - [Mobile App](#mobile-app)
+- [Cloud and Data Infrastructure](#cloud-and-data-infrastructure)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+
 ---
 ## What is Humedat@?
 

@@ -10,6 +10,23 @@
   <img src="images/logo_uach.png" alt="Logo de la Universidad Austral de Chile" height="150"/>
 </p>
 
+
+## Tabla de contenidos
+
+- [¿Qué es Humedat@?](#qué-es-humedat)
+- [Equipo del proyecto y colaboradores](#equipo-del-proyecto-y-colaboradores)
+- [Financiamiento y apoyo](#financiamiento-y-apoyo)
+- [Contenidos del repositorio](#contenidos-del-repositorio)
+- [Cómo funciona el sistema](#cómo-funciona-el-sistema)
+- [Descripción general del hardware](#descripción-general-del-hardware)
+- [Funcionalidades del software](#funcionalidades-del-software)
+  - [Aplicación web](#aplicación-web)
+  - [Aplicación móvil](#aplicación-móvil)
+- [Infraestructura de datos y nube](#infraestructura-de-datos-y-nube)
+- [Primeros pasos](#primeros-pasos)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
+
 ---
 
 ## ¿Qué es Humedat@?
