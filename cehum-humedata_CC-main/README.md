@@ -1,2 +1,1 @@
-# cehum-humedata_CC
- Several codes for the development of Humedat@. The precedent version is cehum-humedata by christian-leufulab. Currently curated and being developped by CC (cristiancorrea@gmail.com).  
+This subfolder contains selected device-specific firmware that may be more current than the corresponding files in the root directory — users looking for deployment-ready source code for individual buoys should inspect this forlder carefully. Substantial curatorial work remains to consolidate both locations into a coherent structure.
