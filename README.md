@@ -1,17 +1,18 @@
-# Humedat@ — Smart Buoy for Real-Time, Cost-Effective Water Quality Monitoring
 
-> Conceived and led by **[Cristián Correa, PhD](mailto:cristiancorrea@gmail.com)**, Marine Biologist and Ecologist at the [Centro de Humedales Río Cruces (CEHUM)](https://cehum.org/), in collaboration with the [LeufüLab Digital Fabrication Laboratory](https://leufulab.cl/) at Universidad Austral de Chile.  
-> Software prototype developed by Course IIC2154 — Proyecto de Especialidad 2024, Pontificia Universidad Católica de Chile.  
-> Licensed under [GPL-3.0](./LICENSE).
+[English](README.md) | [Español](README.es.md)
+
+# Humedat@ — Smart buoy for real-time, cost-effective water quality monitoring
+
+> **Humedat@** is a technological innovation born in Valdivia, Chile, and promoted by the [Centro de Humedales Río Cruces (CEHUM)](https://cehum.org/) in collaboration with [LeufüLab](https://leufulab.cl/), both part of [Universidad Austral de Chile](https://www.uach.cl/). It is designed for remote, continuous, and real-time monitoring of water quality in wetlands and other aquatic ecosystems.  
 
 
 <p>
   <img src="images/logo_CEHUM.png" alt="CEHUM logo" height="150"/>
   <img src="images/leufulab_logo.jpg" alt="Leufulab logo" height="150"/>
+<img src="images/logo_uach.png" alt="Leufulab logo" height="150"/>
 </p>
 
 ---
-
 ## What is Humedat@?
 
 Humedat@ is an open, low-cost environmental monitoring system born in Valdivia, Chile, designed to continuously track water quality in wetlands and other aquatic ecosystems. Each Humedat@ unit is built around a repurposed stainless steel beer keg, housing waterproof sensors, microcontrollers, power systems, local storage, and wireless communication modules.
@@ -22,9 +23,30 @@ Humedat@ is an open, low-cost environmental monitoring system born in Valdivia, 
 
 The system records environmental variables — such as water temperature, pH, electrical conductivity, dissolved oxygen, and oxidation-reduction potential — alongside internal device health indicators. Data are transmitted wirelessly from the field to cloud-based storage and made available through interactive web and mobile interfaces, in near real time.
 
-Humedat@ was designed as a scalable platform: For example, CEHUM can deploy it across multiple organizations, each managing its own network of buoys grouped into **clusters** (e.g., by project or client) and **zones** (individual measurement sites, one buoy per zone). If a smart buoy requires maintenance and is swapped out, the software handles the transition transparently so that data series remain uninterrupted.
+Humedat@-software was designed to scale the platform: For example, CEHUM can deploy it across multiple organizations, each managing its own network of buoys grouped into **clusters** (e.g., by project or client) and **zones** (individual measurement sites, one buoy per zone). If a smart buoy requires maintenance and is swapped out, the software handles the transition transparently so that data series remain uninterrupted.
 
-**Funding and support:** This project has been made possible through the backing of the [Centro de Humedales Río Cruces (CEHUM)](https://cehum.org/), the Pontificia Universidad Católica de Chile through its Capstone engineering course (IIC2154 — Proyecto de Especialidad 2024), the [Proyecto de Conservación Habitable Isla San Francisco](https://tfertil.cl/proyecto/isla-san-francisco/), and [Cerveza Kunstmann](https://www.cerveza-kunstmann.cl/).
+The project aims to make environmental monitoring technology more accessible for research, education, conservation, and community-based wetland stewardship.
+
+---
+## Project team and contributors
+
+**Project lead**
+
+- **Cristián Correa, PhD** — Marine Biologist and Ecologist — [cristiancorrea@gmail.com](mailto:cristiancorrea@gmail.com)
+
+**Core technical contributors**
+
+- **Christian Santibáñez** — Electrical Engineer  
+- **David Valencia** — Industrial Designer  
+- **Ian Zamora** — Electronic Engineer  
+- **Kathrina Loyola** — BSc in Biology  
+- **Matías Soto** — Software Engineer  
+
+---
+
+## Funding and support
+
+This project has been made possible through the institutional backing and funding of the [Centro de Humedales Río Cruces (CEHUM)](https://cehum.org/), the [Proyecto de Conservación Habitable Isla San Francisco](https://tfertil.cl/proyecto/isla-san-francisco/), contributions from [Cerveza Kunstmann](https://www.cerveza-kunstmann.cl/), collaboration with [LeufüLab](https://leufulab.cl/) . The current Humedat@-software prototype was developed through Course IIC2154 — Proyecto de Especialidad 2024, Pontificia Universidad Católica de Chile, as part of the broader Humedat@ hardware–software ecosystem.
 
 ---
 
@@ -59,14 +81,30 @@ Sensors → Arduino (MKR WAN 1300) → LoRaWAN radio → Dragino Gateway
         → Backend API (AWS App Runner) → Web / Mobile App
 ```
 
-1. **On the smart buoy:** An Arduino microcontroller reads sensors at configurable intervals (typically every 1–5 minutes) and packages the data into compact binary packets.
+1. **On the smart buoy:** An Arduino microcontroller reads sensors at configurable intervals and packages the data into compact binary packets.
 2. **Wireless transmission:** Data are sent via LoRaWAN radio to a Dragino gateway, which forwards them to The Things Network (TTN) over the internet (WiFi or cellular SIM card).
 3. **Cloud ingestion:** A payload formatter in TTN decodes the binary packets into readable values. An MQTT subscriber service then writes the data into a MySQL database hosted on OpenCloud.
 4. **Visualization:** A web application and companion mobile app allow users to explore and interact with the data — through maps, time-series charts, and downloadable CSV exports.
 
 ---
 
+## Hardware Overview
+
+Each Humedat@ smart buoy is built around:
+
+- **Custom PCBs** hosting the Arduino MKR WAN 1300, with ports for Atlas Scientific sensors (I2C), Xi'an sensors (RS485), GPS, and internal environmental sensors.
+- **MOSFET-based power circuits** for automatic daily resets, magnetic-switch resets (using a magnet on the outside of the keg), and GPS power management to extend battery life.
+- **Atlas Scientific EZO modules** or **Xi'an Desun** for water quality sensing (pH, dissolved oxygen, conductivity, ORP, temperature).
+- **Solar panels and batteries** for autonomous operation.
+- **SD card** for local data backup in case of connectivity loss.
+- **Dragino DLOS8N gateway** for LoRaWAN connectivity (via WiFi or a cellular SIM card).
+
+PCB design files are available in the `printed_circuit_boards/` folder.
+
+---
+
 ## Software Features
+The current Humedat@-software prototype was developed through Course IIC2154 — Proyecto de Especialidad 2024, Pontificia Universidad Católica de Chile, as part of the broader Humedat@ hardware–software ecosystem.
 
 ### Web Application
 The web platform serves four user roles with progressively broader permissions:
@@ -86,35 +124,30 @@ The companion app is designed for fieldwork:
 - **Offline support:** Partial offline functionality allows calibration in remote areas with limited connectivity.
 - Compatible with both iOS and Android.
 
----
-
-## Hardware Overview
-
-Each Humedat@ smart buoy is built around:
-
-- **Custom PCBs** hosting the Arduino MKR WAN 1300, with ports for Atlas Scientific sensors (I2C), Xi'an sensors (RS485), GPS, and internal environmental sensors.
-- **MOSFET-based power circuits** for automatic daily resets, magnetic-switch resets (using a magnet on the outside of the keg), and GPS power management to extend battery life.
-- **Atlas Scientific EZO modules** for water quality sensing (pH, dissolved oxygen, conductivity, ORP, temperature), and **Xi'an Desun** sensors as an alternative or complement.
-- **Solar panels and batteries** for autonomous operation.
-- **SD card** for local data backup in case of connectivity loss.
-- **Dragino DLOS8N gateway** for LoRaWAN connectivity (via WiFi or a cellular SIM card).
-
-PCB design files are available in the `printed_circuit_boards/` folder.
 
 ---
+## Cloud and Data Infrastructure
 
-## Cloud Infrastructure used in different configurations include
+Humedat@ can be deployed using different cloud and software configurations depending on the scale, connectivity, visualization needs, and maintenance capacity of each implementation. The current and historical configurations include the following components:
 
-| Component | Technology | Notes |
+| Component | Technology | Purpose |
 |---|---|---|
-| Sensor database | MySQL on OpenCloud | Manually scalable |
-| User database | MongoDB (shared tier) | Up to 5 GB free |
-| Backend API | AWS App Runner | Auto-scales up to 25 instances |
-| User authentication | Clerk | External identity provider |
-| LoRaWAN network | The Things Network (TTN) | Australia 1 server (AU_915_928_FSB_2) |
-| Legacy dashboards | Grafana | Being replaced by Humedat@-software |
+| LoRaWAN network | The Things Network (TTN) | Receives and manages data packets transmitted by Humedat@ devices through LoRaWAN gateways |
+| Payload decoding | TTN payload formatters | Decodes compact LoRaWAN binary packets into readable environmental variables |
+| Sensor data ingestion | Python MQTT subscriber | Listens for decoded TTN messages and writes sensor data into the database |
+| Sensor data storage | MySQL | Stores decoded environmental measurements, timestamps, and device identifiers |
+| Cloud/server hosting | OpenCloud and AWS-based configurations | Hosts database, backend, or application services depending on deployment needs |
+| Backend API | Node.js, Express, TRPC, Prisma | Provides the application layer connecting databases, users, and client interfaces |
+| User and application data | Application database managed through the software stack | Stores application-level information such as users, organizations, clusters, zones, permissions, and configuration metadata |
+| User authentication | Clerk | Manages user identity, login, and role-based access |
+| Web interface | React, Next.js, Tailwind CSS, Shadcn/ui | Provides browser-based maps, time-series visualization, data export, annotation, and administration tools |
+| Mobile interface | React Native and Expo | Supports field-oriented access, including calibration workflows and mobile data consultation |
+| Advanced data processing | R software | Supports advanced analyses, data-quality checks, calibration assessments, and custom visualizations, particularly during experimental and development trials |
+| Legacy dashboards | Grafana | Previously used for direct visualization of MySQL sensor data; retained as a reference and backup visualization pathway |
 
-All communications use HTTPS and encrypted credentials. The App Runner backend can handle up to 100 concurrent requests per instance.
+
+This infrastructure is modular. Individual deployments may use only part of the stack, replace specific services, or adapt the configuration to local technical capacity, connectivity conditions, hosting preferences, and long-term maintenance needs.
+
 
 ---
 
@@ -144,4 +177,4 @@ For questions or collaboration inquiries, contact: **Cristián Correa** — [cri
 
 ## License
 
-This project is licensed under the **GNU General Public License v3.0**. See [`LICENSE`](./LICENSE) for details.
+The source code in this repository is licensed under **GNU General Public License v3.0** (see [`LICENSE`](./LICENSE) for details). Documentation, images, diagrams, and hardware design files are also distributed under GPL-3.0, or under the specific license indicated in their respective folders.
