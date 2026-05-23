@@ -86,6 +86,16 @@ Este repositorio contiene el código fuente y la documentación completa del sis
 | `working_codes/` | Versiones estables o de referencia del firmware de los dispositivos |
 | `xian_gps_debug/` | Utilidades de diagnóstico GPS |
 
+> ⚠️ **Nota sobre la Estructura del Repositorio**
+>
+> Este repositorio se comparte en el estado en desarrollo en que se encuentra y no pretende ser una base de código limpia ni completamente curada. La subcarpeta `cehum-humedata_CC-main/` contiene firmware seleccionado y específico para cada dispositivo que puede estar más actualizado que los archivos correspondientes en la raíz — los usuarios que busquen código fuente listo para desplegar en boyas individuales deberían revisarla con atención. Queda pendiente un trabajo curatorial sustancial para consolidar ambas ubicaciones en una estructura coherente.
+
+### Repositorios históricos
+
+Versiones anteriores del código de Humedat@ fueron desarrolladas por Christian Santibañez en repositorios separados. 
+- https://github.com/christian-leufulab/cehum-humedata.git
+- https://github.com/mosfetdriver/cehum-humedata
+
 ---
 
 ## Cómo funciona el sistema

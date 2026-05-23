@@ -85,6 +85,17 @@ This repository contains the full codebase and documentation for the Humedat@ sy
 | `working_codes/` | Stable/reference versions of device firmware |
 | `xian_gps_debug/` | GPS diagnostic utilities |
 
+> ⚠️ **Note on Repository Structure**
+>
+> This repository is shared as-is and makes no claim to being a clean or fully curated codebase. The subfolder `cehum-humedata_CC-main/` contains selected device-specific firmware that may be more current than the corresponding files in the root — users looking for deployment-ready source code for individual buoys should inspect it carefully. Substantial curatorial work remains to consolidate both locations into a coherent structure.
+
+### Legacy repositories
+
+Earlier versions of the Humedat@ codebase were developed by Christian Santibañez in separate repositories. 
+- https://github.com/christian-leufulab/cehum-humedata.git
+- https://github.com/mosfetdriver/cehum-humedata
+
+
 ---
 
 ## How the System Works
