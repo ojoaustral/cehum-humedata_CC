@@ -1,0 +1,3098 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "#F2CC0C",
+        "name": "Mantenciones",
+        "rawQuery": "SELECT\n    UNIX_TIMESTAMP(timestamp) as time_sec,\n    <text_column> as text,\n    <tags_column> as tags\n  FROM logs\n  WHERE $__timeFilter(timestamp)\n  ORDER BY timestamp ASC\n  LIMIT 100\n  ",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "mantención"
+          ],
+          "type": "tags"
+        }
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 2,
+  "id": 11,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 82,
+      "panels": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "description": "",
+          "gridPos": {
+            "h": 31,
+            "w": 16,
+            "x": 0,
+            "y": 1
+          },
+          "id": 80,
+          "options": {
+            "content": "# Humedat@ -- Isla San Francisco\n\nHas entrado al visualizador web de **Humedat@, plataforma en tiempo real para el monitoreo de calidad de aguas** de humedales de Chile.\n\n![Imágen de humedata](/public/img/Humedata_20221118_165704.jpg \"Humedat@ en acción!\")\n\nHumedat@ es una innovación tecnológica nacida en Valdivia, e impulsada por el [Centro de Humedales Río Cruces (CEHUM)](https://cehum.org/). \n\nConsiste en boyas de acero inox hechas con barriles cerveceros reutilizados, con múltiples sensores ambientales y electrónica de fuente abierta para la transmisión inalámbrica constante de datos desde diversos ecosistemas acuáticos hasta usuarios como tú. El aparato tiene tres conjuntos de sensores: 1) sensores acuáticos tales como T, pH, conductividad\neléctrica, oxígeno disuelto, y potencial de oxido-reducción; 2) sensores atmosféricos tales como temperatura y presión atmosférica; y 3) sensores internos que monitorean y resguardan el ambiente electrónico dentro del barril.\n\nEl desarrollo liderado por el [Dr. Cristián Correa](https://scholar.google.ca/citations?user=H3toP-0AAAAJ&hl=en) (cristiancorrea@gmail.com) ha contado con la colaboración del Laboratorio de Fabricación Digital [LeufüLab](https://leufulab.cl/) de la Facultad de Ciencias de la Ingeniería UACh. \nActualmente (2023) se encuentra financiado por el [Proyecto de Conservación Habitable Isla San Francisco](https://islasanfrancisco.cl/), con aportes de [Cerveza Kunstmann](https://cerveza-kunstmann.cl/).\n\nContáctanos para más información, cotizar, establecer sinergias estratégicas, colaborar o aportar monetaria o intelectualmente para que Humedat@ crezca al servicio de la educación y protección de humedales.\n\n![logo](/public/img/CEHUM_Logo_small.jpg \"Centro de Humedales Río Cruces\") ![logo](/public/img/Logo_Leufulab_small.jpg \"Leüfulab, Laboratorio de Fabricación Digital de la Facultad de Ciencias de la Ingeniería UACh\") ![logo](/public/img/Logo_UACH_small.jpg \"Universidad Austral de Chile\")\n\n# Observa el rítmo del humedal\nA continuación verás los datos que Humedat@ mide y tarnsmite en tiempo real desde el estuario del Río Valdivia junto a la Isla San Francisco. En conjunto, esta información revela el funcionamiento de este sistema ecológico, y permite advertir -- y reaccionar! -- tempranamente a cambios naturales o antropogénicos de su estado de salud ecosistémica.  \n\n![logo](/public/img/LOGO_ISFsmall.jpg \"Proyecto habitable Isla San Francisco\")  \n\n**Versión beta**: Vienen actualizaciones cosméticas y analíticas, incluyendo correcciones de parámetros de calidad de agua.   ",
+            "mode": "markdown"
+          },
+          "pluginVersion": "9.1.6",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mysql",
+                "uid": "ETplngV4k"
+              },
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": false,
+              "rawSql": "SELECT\n  timestamp AS \"time\",\n  id\nFROM logs\nWHERE\n  $__timeFilter(timestamp)\nORDER BY timestamp",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "id"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "logs",
+              "timeColumn": "timestamp",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Léeme",
+          "type": "text"
+        }
+      ],
+      "title": "Introducción",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "mysql",
+        "uid": "RXW979e7k"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 26,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "RXW979e7k"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Variables ambientales ",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 4,
+          "mappings": [],
+          "noValue": "no data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 2
+      },
+      "id": 8,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "opacity": 0.8,
+          "tooltip": false,
+          "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": false,
+          "showMeasure": true,
+          "showScale": true,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": false,
+              "style": {
+                "color": {
+                  "fixed": "dark-red"
+                },
+                "opacity": 0.8,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 40,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/cross.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "field": "",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 40,
+                  "textAlign": "left",
+                  "textBaseline": "bottom"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "location": {
+              "latitude": "latitude",
+              "longitude": "longitude",
+              "mode": "coords"
+            },
+            "name": "Humedat@",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "id": "fit",
+          "lat": -39.749939,
+          "lon": -73.263332,
+          "shared": false,
+          "zoom": 15
+        }
+      },
+      "pluginVersion": "9.1.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  latitude,\n  longitude\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]]\nORDER BY id DESC LIMIT 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "latitude"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "longitude"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "int",
+              "name": "",
+              "params": [
+                "dev_id",
+                "=",
+                "1"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "title": "Ubicación",
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 1030,
+          "min": 980,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 990
+              },
+              {
+                "color": "light-yellow",
+                "value": 1020
+              }
+            ]
+          },
+          "unit": "pressurehpa"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "timezone": [
+          "browser"
+        ],
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  atmospheric_pressure * 10 AS `Presión Atmosférica`\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18'OR timestamp > '2024-01-21 13:39:32')#  excluir período en lab.\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "atmospheric_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "# This query groups data by time period (e.g. 1 h) and calculates an average. \r\n# If no data is available in the period, it introduces a NULL value in order to display gaps in the graph.\r\n# The first chunk \"WITH AdjustedLogs AS (...)\" does the daylight saving time adjustment before the other calculations. \r\n# This was necessary to avoid problems created by combining macros with date adjustments. \r\n\r\nWITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 0.5 HOUR) AS adjusted_timestamp,\r\n        atmospheric_pressure*10 AS atmospheric_pressure\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(atmospheric_pressure) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');\r\n\r\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "atmospheric_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Presión Atmosférica",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 40,
+          "min": -5,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 10
+              },
+              {
+                "color": "light-yellow",
+                "value": 20
+              },
+              {
+                "color": "super-light-red",
+                "value": 25
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Temperatura Atmosférica"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Temperatura del Agua"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora "
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset (set it to 1 in winter) to account for daylight saving time. \n  atmospheric_temperature AS `Temperatura Atmosférica`,\n  #internal_temperature AS `Temperatura Interna`,\n  water_temperature AS `Temperatura del Agua`\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp, # displaces the average curve\r\n        atmospheric_temperature,\r\n        water_temperature\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(atmospheric_temperature) AS 'promedio a la hora',\r\n    AVG(water_temperature) AS 'promedio a la hora '\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Temperatura",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "0-3: Riesgo de anoxia\n3-5: Hipoxia\n5-10: Normoxia",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 15,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 3
+              },
+              {
+                "color": "light-green",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "mg/L"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 11
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  dissolved_oxygen AS `DO`#,\n  #do_temp AS 'DO (T°)'#,\n  #do_15 AS 'DO at 15°C'\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "dissolved_oxygen"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp,\r\n        dissolved_oxygen \r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(dissolved_oxygen) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');\r\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Oxígeno Disuelto",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 30
+              },
+              {
+                "color": "light-green",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 11
+      },
+      "id": 32,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  sat AS `Sat DO`\n  #sat_temp AS 'Sat DO (T°)'\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp,\r\n        sat\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(sat) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Saturación de Oxígeno (%)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 600,
+          "min": -200,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": -100
+              },
+              {
+                "color": "light-green",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "mvolt"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 11
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  oxide_reduction_potential AS `Potencial de Reduccción`\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "oxide_reduction_potential"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp,\r\n        oxide_reduction_potential\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(oxide_reduction_potential) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Potencial de Óxido Reducción",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "El sensor actual mide en el rango 0.07 − 50,000 μS/cm. En enero 2024, el límite máximo fue superado en ISF y dejó de marcar. Requiere reemplazo.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "log": 10,
+              "type": "log"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 100000,
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 100
+              },
+              {
+                "color": "dark-blue",
+                "value": 200
+              }
+            ]
+          },
+          "unit": "μS/cm"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 20
+      },
+      "hideTimeOverride": true,
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "#Below, note condition \"electrical_conductivity > 0\", this is because there where mant zeroes, possibly due to probe range exceeded.  \nSELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  electrical_conductivity AS `RAW EC`,\n  ec_temp AS 'EC (T°)'\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "electrical_conductivity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp,\r\n        ec_temp\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(ec_temp) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Conductividad Eléctrica",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-green",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 14,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 11,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 6.5
+              },
+              {
+                "color": "light-purple",
+                "value": 8.5
+              }
+            ]
+          },
+          "unit": "pH"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 20
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  ph AS 'pH'\n  #ph_temp 'pH at Current T°'\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "ph"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "PH"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ph_temp"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "PH Compensado por temperatura"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "int",
+              "name": "",
+              "params": [
+                "dev_id",
+                "=",
+                "1"
+              ],
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 1 HOUR) AS adjusted_timestamp,\r\n        ph_temp\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(ph_temp) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 0 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  ph_temp 'pH compensado por T°'\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "ph"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "PH"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ph_temp"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "PH Compensado por temperatura"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "int",
+              "name": "",
+              "params": [
+                "dev_id",
+                "=",
+                "1"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "title": "pH",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 39,
+      "panels": [],
+      "title": "Variables internas (estado de salud de boya)",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 12.5,
+          "min": 9.5,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 10.5
+              },
+              {
+                "color": "green",
+                "value": 12
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 4,
+        "x": 0,
+        "y": 30
+      },
+      "id": 75,
+      "options": {
+        "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "9.1.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time.\n  battery_level\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]]\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "battery_level"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "int",
+              "name": "",
+              "params": [
+                "dev_id",
+                "=",
+                "1"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "title": "Batería",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "decimals": 2,
+          "displayName": "Nivel de Carga de Batería",
+          "mappings": [
+            {
+              "options": {
+                "": {
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "max": 12.8,
+          "min": 9.5,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 10.5
+              },
+              {
+                "color": "light-green",
+                "value": 12
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 4,
+        "y": 30
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  battery_level\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "battery_level"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 0.5 HOUR) AS adjusted_timestamp,\r\n        battery_level\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(battery_level) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Voltaje Batería",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 120,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-green",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 50
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 12,
+        "y": 30
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 0 HOUR) AS \"time\",# This is a offset to account for daylight saving time. \n  internal_humidity AS `Humedad Interna`\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "internal_humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 0.5 HOUR) AS adjusted_timestamp,\r\n        internal_humidity\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(internal_humidity) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Humedad Interna",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 1200,
+          "min": -50,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 100
+              },
+              {
+                "color": "light-green",
+                "value": 300
+              }
+            ]
+          },
+          "unit": "pressurehpa"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promedio a la hora"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 4,
+        "y": 39
+      },
+      "id": 47,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  #timestamp AS \"time\",\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time.\n  10 * (internal_pressure - atmospheric_pressure) AS `Delta Presión Interna (hPa)`\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]] \n  AND timestamp >= '2023-09-15'\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\nORDER BY timestamp",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "atmospheric_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "internal_pressure"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "WITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 0.5 HOUR) AS adjusted_timestamp,\r\n        internal_pressure,\r\n        atmospheric_pressure\r\n    FROM logs\r\n   WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(10 * (internal_pressure - atmospheric_pressure)) AS 'promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Delta presión interna (hPa) ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 45,
+          "min": -5,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-green",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 30
+              },
+              {
+                "color": "light-red",
+                "value": 40
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Datos recibidos"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    0,
+                    20
+                  ],
+                  "fill": "dot"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 12,
+        "y": 39
+      },
+      "id": 37,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "# This query groups data by time period (e.g. 1 h) and calculates an average. \r\n# If no data is available in the period, it introduces a NULL value in order to display gaps in the graph.\r\n# The first chunk \"WITH AdjustedLogs AS (...)\" does the daylight saving time adjustment before the other calculations. \r\n# This was necessary to avoid problems created by combining macros with date adjustments. \r\n\r\nWITH AdjustedLogs AS (\r\n    SELECT \r\n        DATE_ADD(timestamp, INTERVAL 0.5 HOUR) AS adjusted_timestamp,\r\n        internal_temperature\r\n    FROM logs\r\n    WHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\n)\r\n\r\nSELECT\r\n    $__timeGroup(adjusted_timestamp, '1h') AS 'time',\r\n    AVG(internal_temperature) AS 'T° promedio a la hora'\r\nFROM AdjustedLogs\r\nGROUP BY \r\n    $__timeGroup(adjusted_timestamp, '1h',NULL)\r\nORDER BY \r\n    $__timeGroup(adjusted_timestamp, '1h');\r\n\r\n\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  #timestamp AS \"time\",\r\n  DATE_SUB(timestamp, INTERVAL 1 HOUR) AS \"time\",# This is a offset to account for daylight saving time.\r\n  internal_temperature AS `Datos recibidos`\r\nFROM logs\r\nWHERE\r\n  $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  AND timestamp >= '2023-09-15'\r\n  AND (timestamp < '2023-12-28 09:00:18' OR timestamp > '2024-01-21 13:39:32') # period in lab\r\nORDER BY timestamp\r\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Temperatura interna del barril",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "Esto es para estudiar frecuencia de flujo de datos. Internamente Humedat@ registra mediaciones regularmente (actualmente programado cada 15 min).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "log": 10,
+              "type": "log"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "min": 0.1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#24292e17",
+                "value": 5
+              },
+              {
+                "color": "super-light-blue",
+                "value": 15
+              }
+            ]
+          },
+          "unit": "m"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 48
+      },
+      "id": 88,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max",
+            "step",
+            "logmin"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "-- SQL Script for Grafana Dashboard to Monitor Time Elapsed Between Data Packages Reception\r\n\r\nSELECT\r\n  DATE_SUB(a.timestamp, INTERVAL 1 HOUR) AS \"time\",\r\n  TIMESTAMPDIFF(MINUTE, b.timestamp, a.timestamp) AS \"time_elapsed_in_minutes\"\r\nFROM\r\n  (SELECT *, @row_number_a:=@row_number_a + 1 AS rn FROM logs, (SELECT @row_number_a:=0) AS t \r\n  WHERE $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  ORDER BY timestamp) a\r\nJOIN\r\n  (SELECT *, @row_number_b:=@row_number_b + 1 AS rn FROM logs, (SELECT @row_number_b:=0) AS t \r\n  WHERE $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  ORDER BY timestamp) b\r\nON\r\n  a.rn = b.rn + 1\r\nORDER BY\r\n  a.timestamp;\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Tiempo entre mediciones recibidas remotamente",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "decimals": 1,
+          "displayName": "tiempo entre mediciones",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "m"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 12,
+        "y": 48
+      },
+      "id": 90,
+      "options": {
+        "bucketOffset": 0,
+        "combine": false,
+        "legend": {
+          "calcs": [
+            "logmin"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "pluginVersion": "9.1.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "ETplngV4k"
+          },
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "-- SQL Script for Grafana Dashboard to Monitor Time Elapsed Between Data Packages Reception\r\n\r\nSELECT\r\n  DATE_SUB(a.timestamp, INTERVAL 1 HOUR) AS \"time\",\r\n  TIMESTAMPDIFF(MINUTE, b.timestamp, a.timestamp) AS \"time_elapsed_in_minutes\"\r\nFROM\r\n  (SELECT *, @row_number_a:=@row_number_a + 1 AS rn \r\n  FROM logs, (SELECT @row_number_a:=0) AS t \r\n  WHERE $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  ORDER BY timestamp) a\r\nJOIN\r\n  (SELECT *, @row_number_b:=@row_number_b + 1 AS rn \r\n  FROM logs, (SELECT @row_number_b:=0) AS t \r\n  WHERE $__timeFilter(timestamp) \r\n  AND dev_id = [[DevID]] \r\n  ORDER BY timestamp) b\r\nON\r\n  a.rn = b.rn + 1\r\nORDER BY\r\n  a.timestamp;\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Histograma de tiempo entre mediciones recibidas",
+      "type": "histogram"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 84,
+      "panels": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "tBw_bFZIz"
+          },
+          "description": "",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 88
+          },
+          "id": 86,
+          "options": {
+            "content": "# Ayuda  \n## Modificar ventana de tiempo  \nIr a ícono Reloj (arriba, derecha). Seleccionar un rango absoluto de fechas, o bien, enfocarse en el último período de 6 h, 12 h, 24 h, 7 días, etc. \n## Refrescar\nHumedat@ despacha paquetes de datos regularmente (e.g., cada 15 min, según su configuración) aunque algunos de estos paquetes no llegan al servidor (mejoras pendientes). Como usuario final, tu puedes decidir cada cuánto tiempo se refresca tu visualización. Pincha el ícono Refresh para actualizar los gráficos con la última información disponible en el Servidor, y en el menú del costado elije la frecuencia de actualización auntomática. ",
+            "mode": "markdown"
+          },
+          "pluginVersion": "9.1.6",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mysql",
+                "uid": "tBw_bFZIz"
+              },
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": false,
+              "rawSql": "SELECT\n  timestamp AS \"time\",\n  id\nFROM logs\nWHERE\n  $__timeFilter(timestamp)\nORDER BY timestamp",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "id"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "logs",
+              "timeColumn": "timestamp",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Ayuda",
+          "type": "text"
+        }
+      ],
+      "title": "Ayuda",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "mysql",
+        "uid": "RXW979e7k"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 28,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "RXW979e7k"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Tabla de datos",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "ETplngV4k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "id"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 30,
+      "options": {
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "dev_id"
+          }
+        ]
+      },
+      "pluginVersion": "9.1.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "gVCNWHU7k"
+          },
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT id,\n       dev_id as dev_id,\n       atmospheric_pressure AS 'Presión atmosférica',\n       atmospheric_temperature AS 'Temperatura atmosférica',\n       battery_level AS 'Nivel de batería',\n       dissolved_oxygen AS 'RAW DO',\n       do_15 AS 'DO at 15',\n       do_temp AS 'DO at current T°',\n       electrical_conductivity AS 'RAW EC',\n       ec_temp AS 'EC at current T°',\n       internal_humidity AS 'Humedad interna',\n       internal_pressure AS 'Presión interna',\n       internal_temperature AS 'Temperatura interna',\n       latitude AS 'Latitud',\n       longitude AS 'Longitud',\n       oxide_reduction_potential AS 'Potencial reducción',\n       ph AS 'RAW PH',\n       ph_temp AS 'PH at T°',\n       relative_density AS 'Densidad relativa',\n       salinity AS 'Salinidad',\n       total_dissolved_solids AS 'Total de sólidos disueltos',\n       water_temperature AS 'Temperatura del agua',\n       sat AS 'RAW SAT',\n       sat_temp AS 'SAT at current T°',\n       timestamp,\n       DATE_SUB(timestamp, INTERVAL 1 HOUR) AS timestamp_adj\nFROM logs\nWHERE\n  $__timeFilter(timestamp) \n  AND dev_id = [[DevID]]\nORDER BY id",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "logs",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Datos descargables en formato tabular",
+      "type": "table"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "1",
+          "value": "1"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Select Humedat@",
+        "multi": false,
+        "name": "DevID",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "1",
+            "value": "1"
+          },
+          {
+            "selected": false,
+            "text": "2",
+            "value": "2"
+          },
+          {
+            "selected": true,
+            "text": "3",
+            "value": "3"
+          }
+        ],
+        "query": "1,2,3",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Humedat@",
+  "uid": "3qwsMH87k_C",
+  "version": 53,
+  "weekStart": "monday"
+}

@@ -78,8 +78,8 @@ Este repositorio contiene el código fuente y la documentación completa del sis
 | `humedata_atlas/` | Firmware Arduino para boyas con sensores Atlas Scientific |
 | `humedata_xian/` | Firmware Arduino para boyas con sensores Xi'an Desun |
 | `TTN_payload_formatters/` | Decodificadores JavaScript para paquetes de datos LoRaWAN en The Things Network |
-| `mqtt_subscriber/` | Servicio que recibe datos desde TTN y los escribe en la base de datos MySQL |
-| `data_storage/` | Scripts de base de datos y definiciones de esquema |
+| `opencloud_server/` | **Registro del servidor OpenCloud tal como fue construido (2022–2026):** MQTT subscriber, servicios systemd, esquema MySQL, dashboards de Grafana, operación |
+| `data_storage/` | Mensajes TTN de ejemplo de pruebas de 2021 (no son scripts de base de datos) |
 | `printed_circuit_boards/` | Archivos de diseño PCB para la placa principal de Humedat@ |
 | `handle_sensors_test/` | Código de prueba para módulos individuales de sensores |
 | `humedata_testing/` | Scripts de pruebas de integración |
@@ -165,7 +165,7 @@ Humedat@ puede desplegarse usando distintas configuraciones de nube y software, 
 | Decodificación de payload | TTN payload formatters | Decodifica paquetes binarios compactos de LoRaWAN y los transforma en variables ambientales legibles |
 | Ingesta de datos de sensores | Python MQTT subscriber | Escucha mensajes decodificados desde TTN y escribe los datos de sensores en la base de datos |
 | Almacenamiento de datos de sensores | MySQL | Almacena mediciones ambientales decodificadas, timestamps e identificadores de dispositivos |
-| Alojamiento en nube / servidor | Configuraciones basadas en OpenCloud y AWS | Aloja bases de datos, backend o servicios de aplicación, según las necesidades del despliegue |
+| Alojamiento en nube / servidor | OpenCloud (2022–2027, en retiro; ver `opencloud_server/`) y configuraciones basadas en AWS | Aloja bases de datos, backend o servicios de aplicación, según las necesidades del despliegue |
 | Backend API | Node.js, Express, TRPC, Prisma | Provee la capa de aplicación que conecta bases de datos, usuarios e interfaces cliente |
 | Datos de usuarios y aplicación | Base de datos de aplicación gestionada mediante el stack de software | Almacena información de aplicación, como usuarios, organizaciones, clusters, zonas, permisos y metadatos de configuración |
 | Autenticación de usuarios | Clerk | Gestiona identidad de usuarios, inicio de sesión y acceso basado en roles |
@@ -175,6 +175,10 @@ Humedat@ puede desplegarse usando distintas configuraciones de nube y software, 
 | Dashboards heredados | Grafana | Usado previamente para visualización directa de datos de sensores desde MySQL; se mantiene como referencia y vía de visualización de respaldo |
 
 Esta infraestructura es modular. Las implementaciones individuales pueden usar solo parte del stack, reemplazar servicios específicos o adaptar la configuración a las capacidades técnicas locales, condiciones de conectividad, preferencias de hosting y necesidades de mantención a largo plazo.
+
+### Servidor OpenCloud (2022–2027, en retiro)
+
+Desde 2022, el MQTT subscriber, MySQL y Grafana funcionan en una máquina virtual de OpenCloud. Fue suspendida en septiembre de 2026 y luego renovada por un colaborador por un último año (hasta aprox. septiembre de 2027). El 2026-09-24 se inspeccionó y respaldó por completo. [`opencloud_server/`](opencloud_server/README.md) contiene el registro completo del sistema tal como fue construido: arquitectura, código, esquema de la base de datos, servicios, operación y notas para una futura reingeniería. Los datos (el respaldo MySQL completo de 2026, con todos los datos transmitidos 2022-09 → 2025-05, el estado de Grafana y los registros de las tarjetas SD de las boyas) no están en este repositorio; se archivan en el Dropbox del proyecto (`CEHUM-SNCA/Proyecto_CIA/Humedat@/Data/`), según se describe en [`opencloud_server/README.md`](opencloud_server/README.md#where-the-data-lives).
 
 ---
 

@@ -1,2 +1,13 @@
 # Ignore the credentials directory
 credentials/
+# Server credentials and local secrets (added 2026)
+log_in
+.env
+*.env
+# Raw SD-card logs from the buoys (large; archived outside the repo)
+LOG-*.CSV
+# LibreOffice lock files
+.~lock.*#
+# Local Quarto/RStudio previews of Markdown files
+README.html
+README_files/

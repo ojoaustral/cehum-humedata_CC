@@ -1,0 +1,21 @@
+# Humedat@ BP (banco de pruebas) subscriber, as deployed on the OpenCloud VM (April 2024 backup; identical to the
+#   live unit checked 2026-09-24, which still has the bugs fixed below).
+# Install at /etc/systemd/system/humedatabp.service
+# 2026 fixes (documentation copy): first line "Unit]" -> "[Unit]"; Description said "atlas" -> "bp";
+#   Type=Simple -> simple; After=mysqld.service -> mysql.service.
+# Note: ExecStart points to the per-device script subscribe_and_insert_to_db_bp.py (recovered from the server in
+#   2026, see ../subscriber/); the equivalent is /usr/bin/python3 /home/subscribe_and_insert_to_db.py humedata-bp.
+[Unit]
+Description=MQTT Subscriber for humedata bp (banco de pruebas)
+After=network.target
+After=mysql.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/python3 /home/subscribe_and_insert_to_db_bp.py
+
+[Install]
+WantedBy=multi-user.target

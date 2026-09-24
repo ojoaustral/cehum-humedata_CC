@@ -1,0 +1,60 @@
+# /etc/grafana-agent.yaml from the live OpenCloud server (retrieved 2026-09-24). Secrets replaced by placeholders;
+# real values in credentials/Humedata_credentials_private.env (GRAFANA_CLOUD_AGENT_*).
+# The agent (grafana-agent.service, installed 2022) ships MySQL metrics (mysqld_exporter) and MySQL logs to Grafana Cloud.
+# It does NOT carry sensor data. Note: data_source_name uses root without a password, so the exporter likely fails to log in.
+integrations:
+  mysqld_exporter:
+    data_source_name: root@(localhost:3306)/
+    enabled: true
+    instance: mysql-01
+    relabel_configs:
+    - replacement: integrations/mysql
+      source_labels:
+      - __address__
+      target_label: job
+  prometheus_remote_write:
+  - basic_auth:
+      password: <GRAFANA_CLOUD_AGENT_METRICS_TOKEN>
+      username: <GRAFANA_CLOUD_AGENT_METRICS_USER>
+    url: <GRAFANA_CLOUD_AGENT_METRICS_URL>
+logs:
+  configs:
+  - clients:
+    - basic_auth:
+        password: <GRAFANA_CLOUD_AGENT_METRICS_TOKEN>
+        username: <GRAFANA_CLOUD_AGENT_LOGS_USER>
+      url: <GRAFANA_CLOUD_AGENT_LOGS_URL>
+    name: integrations
+    positions:
+      filename: /tmp/positions.yaml
+    scrape_configs:
+    - job_name: integrations/mysql
+      pipeline_stages:
+      - regex:
+          expression: (?P<timestamp>.+) (?P<thread>[\d]+) \[(?P<label>.+?)\]( \[(?P<err_code>.+?)\] \[(?P<subsystem>.+?)\])? (?P<msg>.+)
+      - labels:
+          err_code: null
+          label: null
+          subsystem: null
+      - drop:
+          drop_counter_reason: drop empty lines
+          expression: ^ *$
+      static_configs:
+      - labels:
+          __path__: /var/log/mysql/*.log
+          instance: mysql-01
+          job: integrations/mysql
+    target_config:
+      sync_period: 10s
+metrics:
+  configs:
+  - name: integrations
+    remote_write:
+    - basic_auth:
+        password: <GRAFANA_CLOUD_AGENT_METRICS_TOKEN>
+        username: <GRAFANA_CLOUD_AGENT_METRICS_USER>
+      url: <GRAFANA_CLOUD_AGENT_METRICS_URL>
+  global:
+    scrape_interval: 60s
+  wal_directory: /tmp/grafana-agent-wal
+
