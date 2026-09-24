@@ -1,0 +1,17 @@
+# RETIRED: Humedat@ Xian subscriber from the April 2024 backup. Not present on the server in 2026: on 2024-04-18 it was
+#   replaced by humedatalihuen.service (Lihuen is the buoy with Xi'an Desun sensors, TTN id humedata-lihuen).
+#   Kept for the historical record.
+# Install at /etc/systemd/system/humedataxian.service
+# 2026 fix (documentation copy): added After=mysql.service for consistency with the other units.
+[Unit]
+Description=MQTT Subscriber for Humedata Xian
+After=network.target
+After=mysql.service
+
+[Service]
+Restart=always
+RestartSec=10
+ExecStart=/usr/bin/python3 /home/subscribe_and_insert_to_db.py humedata-xian
+
+[Install]
+WantedBy=multi-user.target

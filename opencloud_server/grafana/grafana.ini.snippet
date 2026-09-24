@@ -1,0 +1,31 @@
+# Settings of /etc/grafana/grafana.ini on the OpenCloud VM (Grafana 9.1.6, installed from
+# grafana-enterprise_9.1.6_amd64.deb). Checked on the live server 2026-09-24.
+# Only these lines differ from the packaged defaults; everything else stays commented out (";"),
+# so Grafana used its defaults (HTTP port 3000, sqlite /var/lib/grafana/grafana.db).
+
+[auth.anonymous]
+# Public, read-only access to dashboards without login.
+enabled = true
+org_name = Humedata ISF (Atlas beta)
+org_role = Viewer
+
+[feature_highlights]
+enabled = false
+
+# SMTP was NOT configured on the server (the [smtp] section stayed at its defaults).
+# The manual describes how to enable it; pattern, if ever needed:
+# [smtp]
+# enabled = true
+# host = <SMTP_HOST>:587
+# user = <SMTP_USER>
+# password = <SMTP_PASSWORD>      ; wrap in """...""" if it contains # or ;
+# from_address = admin@grafana.localhost
+# from_name = Grafana
+
+# Everything else lived in grafana.db (backed up privately, see ../README.md "Where the data lives"):
+#   orgs:        1 "Humedat@ brewer " (admin org), 3 "Humedata ISF (Atlas beta)" (anonymous viewers land here)
+#   datasources: "MySQL" in both orgs -> localhost:3306, database mqtt;
+#                org 1 connects as root (!), org 3 as grafanareader (read-only)
+#   dashboards:  exported to dashboards/*.json (7), annotations to annotations.json (102, 2023-09 -> 2024-06)
+#   images:      custom logos/icons in img/ were copied to /usr/share/grafana/public/img/ and used from
+#                Markdown text panels as /public/img/<file>

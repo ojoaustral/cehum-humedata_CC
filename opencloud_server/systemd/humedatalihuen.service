@@ -1,0 +1,16 @@
+# Humedat@ Lihuen subscriber (Xi'an Desun sensors), retrieved from the live OpenCloud server on 2026-09-24.
+# Install at /etc/systemd/system/humedatalihuen.service. Created 2024-04-18 from the template; replaced humedataxian.service.
+# Uses the generic subscriber with the TTN device id as argument (DB credentials read from /home/log_in).
+# 2026 fix (documentation copy): added After=mysql.service for consistency with the other units.
+[Unit]
+Description=MQTT Subscriber for Humedata Lihuen
+After=network.target
+After=mysql.service
+
+[Service]
+Restart=always
+RestartSec=10
+ExecStart=/usr/bin/python3 /home/subscribe_and_insert_to_db.py humedata-lihuen
+
+[Install]
+WantedBy=multi-user.target

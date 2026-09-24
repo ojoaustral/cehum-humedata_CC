@@ -1,0 +1,19 @@
+# Template for one more Humedat@ buoy. On the server it existed as /home/humedata_plantilla (and a stray copy
+# /etc/systemd/sytem); humedatalihuen.service was created from it on 2024-04-18.
+# 1. Copy to /etc/systemd/system/humedata<name>.service (e.g. humedatalihuen.service).
+# 2. Replace <humedata-xxx> with the TTN device id (e.g. humedata-lihuen), in Description and ExecStart.
+# 3. sudo systemctl daemon-reload && sudo systemctl enable --now humedata<name>.service
+[Unit]
+Description=MQTT Subscriber for <humedata-xxx>
+After=network.target
+After=mysql.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/usr/bin/python3 /home/subscribe_and_insert_to_db.py <humedata-xxx>
+
+[Install]
+WantedBy=multi-user.target

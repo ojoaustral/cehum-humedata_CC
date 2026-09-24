@@ -1,0 +1,1022 @@
+[
+ {
+  "id": 3,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 14,
+  "epoch": 1694732985309,
+  "epoch_end": 1694793508776,
+  "text": "Horas previas a instalación.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 2,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 14,
+  "epoch": 1696425079570,
+  "epoch_end": 1696538633576,
+  "text": "Mantención en lab: Cargado, DO100 cal, pH cal (defectuoso).",
+  "tags": "mantención:"
+ },
+ {
+  "id": 5,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 2,
+  "epoch": 1697039986428,
+  "epoch_end": 1697039986428,
+  "text": "Asociación SIM a Rut ocasionó pérdida temporal de conectividad.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 4,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 2,
+  "epoch": 1697040078945,
+  "epoch_end": 1697040078945,
+  "text": "Vinculación SIM a Rut. ",
+  "tags": null
+ },
+ {
+  "id": 8,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1697834688687,
+  "epoch_end": 1697834688687,
+  "text": "Reduced freq. to 1 m and GPS fix time to 0.",
+  "tags": null
+ },
+ {
+  "id": 9,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698105789288,
+  "epoch_end": 1698105789288,
+  "text": "Feq. to 10 min and GPS_time_to_fix perhaps to 3 m. ",
+  "tags": null
+ },
+ {
+  "id": 7,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698156065725,
+  "epoch_end": 1698156065725,
+  "text": "Move GPS execution to last and modified delays ",
+  "tags": null
+ },
+ {
+  "id": 6,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698242440279,
+  "epoch_end": 1698242440279,
+  "text": "Disconnecte GPS plug",
+  "tags": null
+ },
+ {
+  "id": 11,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698251321474,
+  "epoch_end": 1698251321474,
+  "text": "Cambio de agua y sacado afuera",
+  "tags": null
+ },
+ {
+  "id": 10,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 77,
+  "epoch": 1698251669146,
+  "epoch_end": 1698251669146,
+  "text": "Took HD outside.\n",
+  "tags": null
+ },
+ {
+  "id": 12,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 77,
+  "epoch": 1698259547711,
+  "epoch_end": 1698259547711,
+  "text": "HD was repositioned inside but antenna outside.",
+  "tags": null
+ },
+ {
+  "id": 13,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 77,
+  "epoch": 1698278357464,
+  "epoch_end": 1698278357464,
+  "text": "HD al interior del contenedor. Sigue desenchufado el GPS.",
+  "tags": null
+ },
+ {
+  "id": 14,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698318463632,
+  "epoch_end": 1698318463632,
+  "text": "Plugged GPS back.",
+  "tags": null
+ },
+ {
+  "id": 15,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 77,
+  "epoch": 1698418477665,
+  "epoch_end": 1698418477665,
+  "text": "const int sleep_time = 2; \nconst int gps_first_fix_time = 5;\nconst int gps_fix_time = 1;",
+  "tags": null
+ },
+ {
+  "id": 16,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1698585638788,
+  "epoch_end": 1698585638788,
+  "text": "little changes including delay after switching off within the GPS function",
+  "tags": null
+ },
+ {
+  "id": 17,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 2,
+  "epoch": 1703764818354,
+  "epoch_end": 1703764818354,
+  "text": "Mantención en el lab. \n-Cargado baterías\n-Gorro con problemas de sulfatación, quemado de MPTT, y fallo panel FV. Ya no cargaba. \n-Se reemplazó el gorro por uno sin MPPTs. \n-Presurizado\n-En grafana, ajuste offsets temporal. \n ",
+  "tags": "mantención:"
+ },
+ {
+  "id": 18,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 32,
+  "epoch": 1705085299701,
+  "epoch_end": 1705085299701,
+  "text": "Reemplazo sensor pH/ORP por uno nuevo, y reacondicionamiento de sensor de DO.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 21,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 6,
+  "epoch": 1705167928682,
+  "epoch_end": 1705167928682,
+  "text": "Code update including custom battery charge equation. ",
+  "tags": null
+ },
+ {
+  "id": 19,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 12,
+  "epoch": 1705170401612,
+  "epoch_end": 1705170401612,
+  "text": "Immersion in zero oxygen solution. It is not a fresh solution.  ",
+  "tags": null
+ },
+ {
+  "id": 20,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 12,
+  "epoch": 1705173106188,
+  "epoch_end": 1705173106188,
+  "text": "fresh solution",
+  "tags": null
+ },
+ {
+  "id": 22,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 10,
+  "epoch": 1705757285593,
+  "epoch_end": 1705757285593,
+  "text": "Inmersión in buffer pH7.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 23,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 10,
+  "epoch": 1705758691703,
+  "epoch_end": 1705758691703,
+  "text": "Limpieza, remoción de leve biofilm.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 24,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 10,
+  "epoch": 1705768266588,
+  "epoch_end": 1705768266588,
+  "text": "Buffer pH 4.",
+  "tags": null
+ },
+ {
+  "id": 25,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 12,
+  "epoch": 1705855172868,
+  "epoch_end": 1705855172868,
+  "text": "Instalación en ISF. De vuelta en el agua.",
+  "tags": "mantención:"
+ },
+ {
+  "id": 28,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1710953201910,
+  "epoch_end": 1710953201910,
+  "text": "Unplugged Xian's sensors, just for a few minutes.. ",
+  "tags": null
+ },
+ {
+  "id": 26,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1710953943917,
+  "epoch_end": 1710953943917,
+  "text": "Plugged GPS",
+  "tags": "debugging:"
+ },
+ {
+  "id": 31,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1711019690755,
+  "epoch_end": 1711019690755,
+  "text": "Desconnected GPS",
+  "tags": null
+ },
+ {
+  "id": 30,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1711019829922,
+  "epoch_end": 1711019829922,
+  "text": "Desconnected GPS.",
+  "tags": null
+ },
+ {
+  "id": 27,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711020051182,
+  "epoch_end": 1711020051182,
+  "text": "Desconnected GPS.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 29,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1711020106190,
+  "epoch_end": 1711020106190,
+  "text": "Launched a second Gateway, leufulab-dragino-pg1301. It was running on correa-dragon-2. ",
+  "tags": "debugging:"
+ },
+ {
+  "id": 32,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1711025520622,
+  "epoch_end": 1711025520622,
+  "text": "Disconnected correa-dragon-2 (DLOS8N).",
+  "tags": "debugging:"
+ },
+ {
+  "id": 34,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1711033220110,
+  "epoch_end": 1711033220110,
+  "text": "Unplugged Humedata Lihuen",
+  "tags": "debugging:"
+ },
+ {
+  "id": 33,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 32,
+  "epoch": 1711033304002,
+  "epoch_end": 1711033304002,
+  "text": "Unplugged Humedata Lihuen. ",
+  "tags": "debugging:"
+ },
+ {
+  "id": 35,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 4,
+  "epoch": 1711035723277,
+  "epoch_end": 1711035723277,
+  "text": "Connected HD Lihue.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 36,
+  "org": "Humedata ISF (Atlas beta)",
+  "dashboard": "Humedat@ - ISF (Atlas beta)",
+  "panel_id": 4,
+  "epoch": 1711036706331,
+  "epoch_end": 1711036706331,
+  "text": "Re loaded the code of HD Lihuen.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 37,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711049511400,
+  "epoch_end": 1711049511400,
+  "text": "Plugged HD Lihuen, sensor atmosférico desconectado. ",
+  "tags": "debugging:"
+ },
+ {
+  "id": 38,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711052591270,
+  "epoch_end": 1711052591270,
+  "text": "Connected atmospheric sensor, and rebooted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 39,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711109112933,
+  "epoch_end": 1711109112933,
+  "text": "Disconnected the last pug before the sensor and rebooted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 40,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711113677956,
+  "epoch_end": 1711113677956,
+  "text": "Plugged new sensor, no reboot.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 41,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711115706815,
+  "epoch_end": 1711115706815,
+  "text": "Rebooted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 44,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711120529496,
+  "epoch_end": 1711120529496,
+  "text": "Disconnected the new BMP280. no reboot.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 42,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1711120538649,
+  "epoch_end": 1711120538649,
+  "text": "Disconnected the new BMP280, no reboot.",
+  "tags": null
+ },
+ {
+  "id": 43,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711122664489,
+  "epoch_end": 1711122664489,
+  "text": "Reeboted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 45,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711135443760,
+  "epoch_end": 1711135443760,
+  "text": "Plugged a new BMP280 directly to the PCB, and rebooted. Did not check the pins' correspondence. ",
+  "tags": "debugging:"
+ },
+ {
+  "id": 46,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711138969871,
+  "epoch_end": 1711138969871,
+  "text": "Unplugged BMP208 and rebooted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 47,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1711203015897,
+  "epoch_end": 1711203015897,
+  "text": "Plugged BMP280, after checking pins, and rebooted.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 48,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1711371408819,
+  "epoch_end": 1711371408819,
+  "text": "Connected GPS, no reboot.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 49,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1711461019952,
+  "epoch_end": 1711461019952,
+  "text": "Moved to CEHUM-Lab.",
+  "tags": "Events:"
+ },
+ {
+  "id": 51,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1712593694387,
+  "epoch_end": 1712593694387,
+  "text": "Modificación de los tiempos de toma de datos.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 52,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1712650442281,
+  "epoch_end": 1712650442281,
+  "text": "Aumento de tiempo (delay) post-apagado de GPS, antes de medición de parámetros de agua.",
+  "tags": "debugging:"
+ },
+ {
+  "id": 53,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1712668010791,
+  "epoch_end": 1712668010791,
+  "text": "Cambio en la secuencia de lectura de sensores, GPS al final\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 55,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1712670534818,
+  "epoch_end": 1712670534818,
+  "text": "Cambio en el tiempo (delay) de lectura y comprobación de ciclo del GPS",
+  "tags": "debugging:"
+ },
+ {
+  "id": 58,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1712759987080,
+  "epoch_end": 1712759987080,
+  "text": "Cambio en el tiempo de lectura de gps a 24s\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 60,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1712763965816,
+  "epoch_end": 1712763965816,
+  "text": "Desconexión sensor BMP280",
+  "tags": "debugging:"
+ },
+ {
+  "id": 62,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1712775727230,
+  "epoch_end": 1712775727230,
+  "text": "Cambio en el tiempo entre mediciones\n\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 63,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1712778100839,
+  "epoch_end": 1712778100839,
+  "text": "Cambio de ciclo condicional GPS",
+  "tags": "debugging:"
+ },
+ {
+  "id": 64,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1712842875426,
+  "epoch_end": 1712842875426,
+  "text": "Cambio de Tiempo entre envió de datos a 5 min",
+  "tags": "debugging:"
+ },
+ {
+  "id": 65,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1712844195596,
+  "epoch_end": 1712844195596,
+  "text": "pruebas de datos de presión\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 66,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1712868245372,
+  "epoch_end": 1712868245372,
+  "text": "ultima prueba de escala de presion\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 67,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1712928209768,
+  "epoch_end": 1712928209768,
+  "text": "Cambios en formulas de envío de datos de presión",
+  "tags": "debugging:"
+ },
+ {
+  "id": 68,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1712938082142,
+  "epoch_end": 1712938082142,
+  "text": "Cambio tiempo ente mediciones\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 69,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1712950645419,
+  "epoch_end": 1712950645419,
+  "text": "Moficacion escala de datos de presión",
+  "tags": "debugging:"
+ },
+ {
+  "id": 70,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1713045909349,
+  "epoch_end": 1713045909349,
+  "text": "Cambio súbito de pH, sin cambios externos. ",
+  "tags": "debugging:"
+ },
+ {
+  "id": 72,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1713369437571,
+  "epoch_end": 1713369437571,
+  "text": "Adicción del sistema de reseteo, programa sin actualización de los debugging previos",
+  "tags": "debugging:"
+ },
+ {
+  "id": 73,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1713379230911,
+  "epoch_end": 1713379230911,
+  "text": "Cambio del código actualizado con el agregado del hard reset\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 75,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1713972842060,
+  "epoch_end": 1713972842060,
+  "text": "Cambio de circuito de hard reset reducido",
+  "tags": "debugging:"
+ },
+ {
+  "id": 76,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714058546158,
+  "epoch_end": 1714058546158,
+  "text": "arreglo y reduccion de cable gps, switch gps y modulo rs485\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 77,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714061318862,
+  "epoch_end": 1714061318862,
+  "text": "Corrección de conexión",
+  "tags": "debugging:"
+ },
+ {
+  "id": 78,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714137943698,
+  "epoch_end": 1714137943698,
+  "text": "Recortes y orden de cables",
+  "tags": "debugging:"
+ },
+ {
+  "id": 79,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 12,
+  "epoch": 1714159774290,
+  "epoch_end": 1714159774290,
+  "text": "cables de los sensores completamente reducidos\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 80,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714411012217,
+  "epoch_end": 1714411012217,
+  "text": "sistema mal conectado",
+  "tags": "debugging:"
+ },
+ {
+  "id": 83,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1714421720206,
+  "epoch_end": 1714421720206,
+  "text": "mala conexion",
+  "tags": "debugging:"
+ },
+ {
+  "id": 81,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 32,
+  "epoch": 1714421816056,
+  "epoch_end": 1714421816056,
+  "text": "mala conexión de alimentación",
+  "tags": null
+ },
+ {
+  "id": 82,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 77,
+  "epoch": 1714423184961,
+  "epoch_end": 1714423184961,
+  "text": "cambio de conexion",
+  "tags": "debugging:"
+ },
+ {
+  "id": 84,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714484682498,
+  "epoch_end": 1714484682498,
+  "text": "Cambio cable sensor de temperatura atmosférica\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 85,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714496536228,
+  "epoch_end": 1714496536228,
+  "text": "Arreglo en la conexión del sensor de temperatura-presión atmosférica",
+  "tags": "debugging:"
+ },
+ {
+  "id": 86,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714501811718,
+  "epoch_end": 1714501811718,
+  "text": "Cambio de sensor temperatura - Presión Atmosférica",
+  "tags": "debugging:"
+ },
+ {
+  "id": 87,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 18,
+  "epoch": 1714667923159,
+  "epoch_end": 1714667923159,
+  "text": "Ajustes del payload formatters en TTN\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 89,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 2,
+  "epoch": 1714678906981,
+  "epoch_end": 1714678906981,
+  "text": "Cambios completos del payload formatters",
+  "tags": "debugging:"
+ },
+ {
+  "id": 90,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 12,
+  "epoch": 1714757105750,
+  "epoch_end": 1714757105750,
+  "text": "Cable de modulo RS485-UART suelto",
+  "tags": "debugging:"
+ },
+ {
+  "id": 92,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1714935231751,
+  "epoch_end": 1714935231751,
+  "text": "Sensores en balde 20 L, se conectó el calentador con termostato seteado a 25°C. Se desconectó el aireador. ",
+  "tags": "Experimento:"
+ },
+ {
+  "id": 93,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 12,
+  "epoch": 1717522272841,
+  "epoch_end": 1717522272841,
+  "text": "Sensor depuradata 4.",
+  "tags": "Experimento:"
+ },
+ {
+  "id": 94,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 12,
+  "epoch": 1717524146206,
+  "epoch_end": 1717524146206,
+  "text": "Sensor DO depuradata 3",
+  "tags": "Experimento:"
+ },
+ {
+  "id": 98,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717785150601,
+  "epoch_end": 1717785150601,
+  "text": "sensor de ph en agua\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 95,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717786594778,
+  "epoch_end": 1717786594778,
+  "text": "sensor de ph cambio del agua al buffer 10, despues de volver al ph 10, a las 16:19, se ve que sube correctamente al valor, posibilidad, de burbuja en el sensor para error de lectura",
+  "tags": "debugging:"
+ },
+ {
+  "id": 96,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717788320674,
+  "epoch_end": 1717788320674,
+  "text": "proceso cambio de buffer\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 97,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717789274682,
+  "epoch_end": 1717789274682,
+  "text": "sensor de ph en buffer 4",
+  "tags": "debugging:"
+ },
+ {
+  "id": 99,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717791326837,
+  "epoch_end": 1717791326837,
+  "text": "Cambio de buffer a 10 nuevamente\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 100,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717792848633,
+  "epoch_end": 1717792848633,
+  "text": "cambio a buffer 7",
+  "tags": "debugging:"
+ },
+ {
+  "id": 101,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1717793700140,
+  "epoch_end": 1717793700140,
+  "text": "Cambio del buffer 7 al agua, sensor ysi marca ph 6.41",
+  "tags": "debugging:"
+ },
+ {
+  "id": 102,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718023397050,
+  "epoch_end": 1718023397050,
+  "text": "Prueba del sensor en buffer 4\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 103,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 12,
+  "epoch": 1718038464429,
+  "epoch_end": 1718038464429,
+  "text": "Calibración sensor de DO, Humedata TOTO",
+  "tags": "debugging:"
+ },
+ {
+  "id": 104,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1718038564177,
+  "epoch_end": 1718038564177,
+  "text": "Calibración sensor de DO, Humedata TOTO",
+  "tags": "debugging:"
+ },
+ {
+  "id": 105,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718044243181,
+  "epoch_end": 1718044243181,
+  "text": "cambio en el modelo del sensor de ph",
+  "tags": "debugging:"
+ },
+ {
+  "id": 106,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@s",
+  "panel_id": 32,
+  "epoch": 1718044994394,
+  "epoch_end": 1718044994394,
+  "text": "cerrado del humedata toto, comienzo prueba de presión ",
+  "tags": "Events:"
+ },
+ {
+  "id": 107,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718048483256,
+  "epoch_end": 1718048483256,
+  "text": "Cambio de buffer a 10 \n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 108,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718052191867,
+  "epoch_end": 1718052191867,
+  "text": "conexion suelta\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 109,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718053650010,
+  "epoch_end": 1718053650010,
+  "text": "cambio a buffer 7",
+  "tags": "debugging:"
+ },
+ {
+  "id": 110,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 4,
+  "epoch": 1718110434534,
+  "epoch_end": 1718110434534,
+  "text": "mala conexión",
+  "tags": "debugging:"
+ },
+ {
+  "id": 112,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718118249771,
+  "epoch_end": 1718118249771,
+  "text": "cambio a buffer 4",
+  "tags": "debugging:"
+ },
+ {
+  "id": 111,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718119232030,
+  "epoch_end": 1718119232030,
+  "text": "cambio del modulo rs485 a uart\n",
+  "tags": "debugging:"
+ },
+ {
+  "id": 114,
+  "org": "Humedat@ brewer ",
+  "dashboard": "Humedat@ - Lihuen",
+  "panel_id": 10,
+  "epoch": 1718121149704,
+  "epoch_end": 1718121149704,
+  "text": "Cambio al agua del balde de 4L",
+  "tags": "debugging:"
+ }
+]

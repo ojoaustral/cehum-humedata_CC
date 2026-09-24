@@ -1,0 +1,22 @@
+# Humedat@ Atlas subscriber, as deployed on the OpenCloud VM (April 2024 backup; identical to the live unit checked 2026-09-24,
+#   which still has the two bugs fixed below).
+# Install at /etc/systemd/system/humedata.service
+# 2026 fixes (documentation copy): Type=Simple -> simple (systemd values are lowercase);
+#   After=mysqld.service -> mysql.service (the unit name on Ubuntu 20.04).
+# Note: ExecStart points to the per-device script subscribe_and_insert_to_db_atlas.py (recovered from the server
+#   in 2026, see ../subscriber/). It is the generic subscriber with the device name and credentials hardcoded;
+#   the equivalent is /usr/bin/python3 /home/subscribe_and_insert_to_db.py humedata-atlas (see humedata_template.service).
+[Unit]
+Description=MQTT Subscriber for humedata atlas
+After=network.target
+After=mysql.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/python3 /home/subscribe_and_insert_to_db_atlas.py
+
+[Install]
+WantedBy=multi-user.target
